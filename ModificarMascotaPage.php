@@ -11,7 +11,7 @@
             header('Location: MascotaPage.php');
         }
         $csMascota = array();
-        $csMascota= $csLogica->consulta("mascotas");
+        $csMascota= $csLogica->consulta2("mascotas","WHERE id_mascota=".$_GET['id_mascota']);
         $id_mascota=$csMascota[0]['id_mascota'];
         $nombre=$csMascota[0]['nombre'];
         $genero=$csMascota[0]['genero'];

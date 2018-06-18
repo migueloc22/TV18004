@@ -41,7 +41,7 @@
                                 $consultaDepartamento = array();
                                 $consultaDepartamento= $csLogica->consulta("departamento");    
                                 for ($i=0; $i <count($consultaDepartamento) ; $i++) { 
-                                    echo "<option value='".$consultaDepartamento[$i] ["id_depatamento"]."'>".$consultaDepartamento[$i] ["nombre"]."</option>";
+                                    echo "<option value='".$consultaDepartamento[$i] ["id_departamento"]."'>".$consultaDepartamento[$i] ["nombre"]."</option>";
                                 }
                             ?>
                         </Select>
@@ -53,8 +53,8 @@
                         </Select>
                     </div>
                     <div class="form-group">
-                        <label for="txt_calular">Celular</label>
-                        <input required  type="number" name="txt_calular" id="txt_calular" class="form-control">
+                        <label for="txt_celular">Celular</label>
+                        <input required  type="number" name="txt_celular" id="txt_celular" class="form-control">
                     </div>
                     <div class="form-group">
                         <label for="txt_correo">Correo</label>
@@ -65,11 +65,11 @@
                             if (isset($_POST['option'])) {
                                 $nombres=$_POST['txt_nombres'];
                                 $apellido=$_POST['txt_apellido'];
-                                $calular=$_POST['txt_calular'];
+                                $celular=$_POST['txt_celular'];
                                 $correo=$_POST['txt_correo'];
                                 $pass="123456789";
                                 $fk_idCiudad=$_POST['txt_fk_idCiudad'];
-                                $csLogica->crearUsuario( $nombres, $apellido, $calular, $correo, $pass, $fk_idCiudad);
+                                $csLogica->crearUsuario( $nombres, $apellido, $celular, $correo, $pass, $fk_idCiudad);
                             }
                         ?>
                     </div>

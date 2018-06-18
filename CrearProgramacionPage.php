@@ -53,7 +53,7 @@
 						  </select>
 						</div>
 					  	<div class="col-md-12">
-						  <label for="cboxHora">Partida</label>
+						  <label for="cboxHora">N Porcion</label>
 						  <select name="cboxHora" id="cboxHora" class="form-control">
 									<option value="1">1</option>
 									<option value="2">2</option>

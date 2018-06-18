@@ -17,20 +17,28 @@
         //los parametros debe ser los mismo con el nombre de la base de datos para no confundirse con los nombres mas adelante
         // cada el valor que va insertar en sql debe referirce en simblo ?
         //las cantidad de s son los numeros de valores q va ultilizar  
-        function crearUsuario( $nombres, $apellido, $calular, $correo, $pass, $fk_idCiudad)
+        function crearUsuario( $nombres, $apellido, $celular, $correo, $pass, $fk_idCiudad)
         {
-            $sentencia=$this->cnn->prepare("INSERT INTO usuario (nombres, apellido, calular, correo, pass, fk_idCiudad) VALUES (?,?,?,?,?,?)");
-            $sentencia->bind_param('ssssss', $nombres1, $apellido1, $calular1, $correo1, $pass1, $fk_idCiudad1);
+            $sentencia=$this->cnn->prepare("INSERT INTO usuario (nombres, apellido, celular, correo, pass, fk_idCiudad) VALUES (?,?,?,?,?,?)");
+            $sentencia->bind_param('ssssss', $nombres1, $apellido1, $celular1, $correo1, $pass1, $fk_idCiudad1);
             $nombres1=$nombres;
             $apellido1=$apellido;
-            $calular1=$calular;
+            $celular1=$celular;
             $correo1=$correo;
             $pass1=$pass;
             $fk_idCiudad1=$fk_idCiudad;
             if ($sentencia->execute()) {
-                echo "Usuario registrado";
+                $msn="<div class='alert alert-success'>
+                <a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a>
+                <strong>Bienvenido!</strong> Registro satisfactorio.
+              </div>";
+                echo $msn;
             } else {
-                echo "Usuario no registrado";
+                $msn="<div class='alert alert-danger'>
+                <a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a>
+                <strong>Error!</strong> Registro no satisfactorio.
+              </div>";
+                echo $msn;
             }
             $sentencia->close();        
         }
@@ -93,13 +101,13 @@
             }
             $sentencia->close();        
         }
-        function actualizarUsuario( $nombres, $apellido, $calular, $correo, $pass, $fk_idCiudad,$id_usuario)
+        function actualizarUsuario( $nombres, $apellido, $celular, $correo, $pass, $fk_idCiudad,$id_usuario)
         {
-            $sentencia=$this->cnn->prepare("UPDATE usuario SET nombres=?,apellido=?,calular=?,correo=?,pass=?,fk_idCiudad=? WHERE id_usuario=?,");
-            $sentencia->bind_param('sssssss', $nombres1, $apellido1, $calular1, $correo1, $pass1, $fk_idCiudad1,$id_usuario1);
+            $sentencia=$this->cnn->prepare("UPDATE usuario SET nombres=?,apellido=?,celular=?,correo=?,pass=?,fk_idCiudad=? WHERE id_usuario=?,");
+            $sentencia->bind_param('sssssss', $nombres1, $apellido1, $celular1, $correo1, $pass1, $fk_idCiudad1,$id_usuario1);
             $nombres1=$nombres;
             $apellido1=$apellido;
-            $calular1=$calular;
+            $celular1=$celular;
             $correo1=$correo;
             $pass1=$pass;
             $fk_idCiudad1=$fk_idCiudad;
