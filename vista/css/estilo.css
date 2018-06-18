@@ -1,0 +1,47 @@
+.panel{
+	opacity: 0px;
+}
+#body{
+	background: url("img/fondo.jpg");
+	background-attachment: fixed;
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: cover;
+	color: white;
+}
+body
+{
+	background-color: #f1f1f1;
+}
+.btn-primary {
+    color: #fff;
+    background-color: #FD5F07
+    border-color: #FD5F07;
+}
+.btn-primary:hover {
+    color: #fff;
+    background-color: #FD5F07;
+    border-color: #FD5F07;
+}
+h3{
+	color: #FD5F07;
+}
+footer  
+{
+	background-color: #FD5F07;
+    color: #ffffff;
+    text-align: left;
+}
+.span
+{
+	font-size: 40px;
+	color: #FD5F07;
+}
+.bg-4 { 
+    background-color: #2f2f2f;
+    color: #ffffff;
+}
+.logo{
+	
+	width: 85%;
+}

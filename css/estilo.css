@@ -1,0 +1,76 @@
+.panel{
+	opacity: 0px;
+}
+
+body
+{
+	background-color: #f1f1f1;
+}
+.body{
+	background: url("../img/fondo.jpg");
+	background-attachment: fixed;
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: cover;
+	
+}
+.btn-primary:hover {
+    color: #fff;
+    background-color: #FD5F07;
+    border-color: #FD5F07;
+}
+.btn-primary {
+    color: #fff;
+    background-color: #FD5F07;
+    border-color: #FD5F07;
+}
+h3{
+	color: #FD5F07;
+}
+footer  
+{
+	background-color: #FD5F07;
+    color: #ffffff;
+    text-align: left;
+}
+.span
+{
+	font-size: 40px;
+	color: #FD5F07;
+}
+.icon-defaul
+{
+	font-size: 30px;
+	color: rgb(170, 170, 170);
+}
+
+.icon-plus
+{
+	background-color: #FD5F07;
+	border-radius: 35px;
+	height: 50px;
+	width: 50px;
+	padding: 5px;
+	
+}
+.icon-plus span
+{
+	font-size: 35px;
+	color: rgb(253, 253, 253);
+}
+.icon-danger
+{
+	font-size: 30px;
+	color: rgb(204, 2, 2);
+}
+.bg-4 { 
+    background-color: #2f2f2f;
+    color: #ffffff;
+}
+.logo{
+	
+	width: 85%;
+}
+.caja{
+	background-color: rgba(255, 255, 255, 0.884);
+}
