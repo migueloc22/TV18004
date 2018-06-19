@@ -28,7 +28,7 @@
 		<div style="height: 55px"></div>
 		<div class="panel col-md-8 col-md-offset-2">
 			<div class="panel-body">
-				<h3 class="panel-heading text-center">Registro de Mascota</h3>
+				<h3 class="panel-heading text-center">Actualizar Información de la Mascota</h3>
 				  <form action=""  method="post">
 					  	<div class="col-md-12">
 						  <label for="txt_nombre">Nombre</label>
@@ -40,7 +40,7 @@
 						</div>
 					  	<div class="col-md-12">
 						  <label for="txt_genero">Genero</label>
-						  <select name="" id="" class="form-control">
+						  <select name="txt_genero" id="txt_genero" class="form-control">
 									<option  value="hembra">Hembra</option>
 									<option value="macho">Macho</option>
 							</select>
@@ -69,7 +69,28 @@
 						</div>
 					  	<div class="col-md-6">
 							  <br>
-						  <input type="submit" class="btn btn-primary" value="Actualizar">
+							<?php
+								if (isset($_GET['id_mascota'])) {
+									if (isset($_POST['btnAction'])) {
+										if ($_POST['cboxTpMascota']=="2") {
+											$foto="perro.jpg";
+										} else {
+											$foto="gato.jpg";
+										}
+										$csLogica->actualizarMascota( $_POST['txt_nombre'], $_POST['txt_genero'], $foto, $_POST['txt_peso'], date('Y/m/d',strtotime($_POST['txt_fecha_nac'])), $_POST['cboxRaza'], $_GET['id_mascota']);											
+									}
+								}
+								else {
+									header('Location: MascotaPage.php');
+								}
+							?>
+							<input type="submit" class="btn btn-primary" name="btnAction" value="Actualizar">
+							<?php
+								if(isset($_POST['btnAction']))
+								{
+									header('Location: MascotaPage.php');
+								}
+							?>
 						</div>
 				  </form>
 				  <div style="height: 500px"></div>

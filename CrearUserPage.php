@@ -75,7 +75,7 @@
                     </div>
                 </div>
                 <div class="panel-footer">
-                    <input  type="submit" value="crear Usuario" name="option"  class="btn btn-primary">
+                    <input  type="submit" value="Registrarme" name="option"  class="btn btn-primary">
                 </div>
             </form>
         </div>

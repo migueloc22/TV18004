@@ -30,13 +30,13 @@
             if ($sentencia->execute()) {
                 $msn="<div class='alert alert-success'>
                 <a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a>
-                <strong>Bienvenido!</strong> Registro satisfactorio.
+                <strong>Bienvenido!</strong> Registro Exitoso.
               </div>";
                 echo $msn;
             } else {
                 $msn="<div class='alert alert-danger'>
                 <a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a>
-                <strong>Error!</strong> Registro no satisfactorio.
+                <strong>Error!</strong> Registro no Exitoso.
               </div>";
                 echo $msn;
             }
@@ -51,9 +51,17 @@
             $fk_id_usuario1=$fk_id_usuario;
            
             if ($sentencia->execute()) {
-                echo "Dispensador registrado";
+                $msn="<div class='alert alert-success'>
+                <a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a>
+                <strong>Dispensador registrado!</strong> Registro Exitoso.
+              </div>";
+                echo $msn;
             } else {
-                echo "Dispensador no registrado";
+                $msn="<div class='alert alert-danger'>
+                <a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a>
+                <strong>Error!</strong> Dispensador no registrado.
+              </div>";
+                echo $msn;
             }
             $sentencia->close();        
         }
@@ -69,9 +77,43 @@
             $fk_id_usuario1=$fk_id_usuario;
             $fk_id_raza1=$fk_id_raza;
             if ($sentencia->execute()) {
-                echo "Mascota registrada";
+                $msn="<div class='alert alert-success'>
+                <a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a>
+                <strong>Mascota registrada!</strong> Registro Exitoso.
+              </div>";
+                echo $msn;
             } else {
-                echo "Mascota no registrada";
+                $msn="<div class='alert alert-danger'>
+                <a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a>
+                <strong>Error!</strong> Mascota no registrada.
+              </div>";
+                echo $msn;
+            }
+            $sentencia->close();        
+        }
+        function actualizarMascota($nombre,$genero,$foto,$peso,$fecha_nac,$fk_id_raza,$id_mascota)
+        {
+            $sentencia=$this->cnn->prepare("UPDATE mascotas SET  nombre=?, genero=?, foto=?, peso=?, fecha_nac=?,  fk_id_raza=? WHERE id_mascota=?");
+            $sentencia->bind_param('sssssss', $nombre1,$genero1,$foto1,$peso1,$fecha_nac1,$fk_id_raza1,$id_mascota1);
+            $nombre1=$nombre;
+            $genero1=$genero;
+            $foto1=$foto;
+            $peso1=$peso;
+            $fecha_nac1=$fecha_nac;
+            $fk_id_raza1=$fk_id_raza;
+            $id_mascota1=$id_mascota;
+            if ($sentencia->execute()) {
+                $msn="<div class='alert alert-success'>
+                <a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a>
+                <strong>Información Actualizada!</strong> Actualización Exitosa.
+              </div>";
+                echo $msn;
+            } else {
+                $msn="<div class='alert alert-danger'>
+                <a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a>
+                <strong>Error!</strong> Actualización Fallida.
+              </div>";
+                echo $msn;
             }
             $sentencia->close();        
         }
@@ -83,9 +125,17 @@
             $serial1=$serial;
             $id_dispensador1=$id_dispensador;           
             if ($sentencia->execute()) {
-                echo "Dispensador actualizado";
+                $msn="<div class='alert alert-success'>
+                <a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a>
+                <strong>Información Actualizada!</strong> Actualización Exitosa.
+              </div>";
+                echo $msn;
             } else {
-                echo "Dispensador no actualizado";
+                $msn="<div class='alert alert-danger'>
+                <a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a>
+                <strong>Error!</strong> Actualización Fallida.
+              </div>";
+                echo $msn;
             }
             $sentencia->close();        
         }
@@ -95,9 +145,17 @@
             $sentencia->bind_param('s',$id_dispensador1);
             $id_dispensador1=$id_dispensador;           
             if ($sentencia->execute()) {
-                echo "Dispensador Eliminado";
+                $msn="<div class='alert alert-success'>
+                <a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a>
+                <strong>Dispensador Eliminado!</strong> Eliminación Exitosa.
+              </div>";
+                echo $msn;
             } else {
-                echo "Dispensador no Eliminado";
+                $msn="<div class='alert alert-danger'>
+                <a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a>
+                <strong>Error!</strong> Dispensador no Eliminado.
+              </div>";
+                echo $msn;
             }
             $sentencia->close();        
         }
@@ -113,9 +171,17 @@
             $fk_idCiudad1=$fk_idCiudad;
             $id_usuario1=$id_usuario;
             if ($sentencia->execute()) {
-                echo "Usuario registrado";
+                $msn="<div class='alert alert-success'>
+                <a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a>
+                <strong>Información Actualizada!</strong> Actualización Exitosa.
+              </div>";
+                echo $msn;
             } else {
-                echo "Usuario no registrado";
+                $msn="<div class='alert alert-danger'>
+                <a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a>
+                <strong>Error!</strong> Actualización Fallida.
+              </div>";
+                echo $msn;
             }
             
             
@@ -127,9 +193,17 @@
             $sentencia->bind_param('s',$id_usuario);
             $id_usuario1=$id_usuario;
             if ($sentencia->execute()) {
-                echo "Usuario registrado";
+                $msn="<div class='alert alert-success'>
+                <a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a>
+                <strong>Usuario Eliminado!</strong> Eliminación Exitosa.
+              </div>";
+                echo $msn;
             } else {
-                echo "Usuario no registrado";
+                $msn="<div class='alert alert-danger'>
+                <a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a>
+                <strong>Error!</strong> Usuario no Eliminado.
+              </div>";
+                echo $msn;
             }
             $sentencia->close();
         }
@@ -139,9 +213,17 @@
             $sentencia->bind_param('s',$id1);
             $id1=$id;
             if ($sentencia->execute()) {
-                echo "Mascota  Eliminada";
+                $msn="<div class='alert alert-success'>
+                <a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a>
+                <strong>Mascota  Eliminada!</strong> Eliminación Exitosa.
+              </div>";
+                echo $msn;
             } else {
-                echo "Mascota no Eliminada";
+                $msn="<div class='alert alert-danger'>
+                <a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a>
+                <strong>Error!</strong> Mascota no Eliminada.
+              </div>";
+                echo $msn;
             }
             $sentencia->close();
         }

@@ -32,8 +32,8 @@
 											$csLogica->EliminarDispensador($_GET['id_dispensador']);
 											break;
 										case 'actualizar':
-											echo "<input type='submit' class='btn btn-primary' name='btnAction' value='Actulizar'> ";
-											echo "<a href='DispensadorPage.php' class='btn btn-danger'>Canclelar</a>";
+											echo "<input type='submit' class='btn btn-primary' name='btnAction' value='Actualizar'> ";
+											echo "<a href='DispensadorPage.php' class='btn btn-danger'>Cancelar</a>";
 											if (isset($_POST['btnAction'])) {
 												$csLogica->actualizarDispensador( $_POST['txt_nombre'], $_POST['txt_serial'],$_GET['id_dispensador']);												
 											}
