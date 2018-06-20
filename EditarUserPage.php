@@ -21,6 +21,9 @@
         $fk_idCiudad=$csUsuario[0]['fk_idCiudad'];
         
     ?>
+    <script type="text/javascript">
+		$('#lngInicio').attr('class','active');
+	</script>
     <div class="container row">
     <div style="height: 55px"></div>
         <div class="panel caja col-md-6 col-sm-offset-4">
@@ -105,5 +108,8 @@
         
     </script>
     
+    <?php 
+		include "template/pie_pagina.php";
+	?>
 </body>
 </html>
