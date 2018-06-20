@@ -36,7 +36,7 @@
 			        <li class='dropdown'>
 			          <a class='dropdown-toggle' data-toggle='dropdown' href='#'>".$userSession[0]["nombres"]." ".$userSession[0]["apellido"]." <span class='caret'></span></a>
 			          <ul class='dropdown-menu'>
-			            <li><a href='#'>Editar Usuario</a></li>
+			            <li><a href='EditarUserPage.php'>Editar Usuario</a></li>
 			            <li><a  href='index.php?CerrarSession=1'>Cerrar Sesión</a></li>
 			          </ul>
 			        </li>

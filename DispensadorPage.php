@@ -33,9 +33,15 @@
 											break;
 										case 'actualizar':
 											echo "<input type='submit' class='btn btn-primary' name='btnAction' value='Actualizar'> ";
-											echo "<a href='DispensadorPage.php' class='btn btn-danger'>Cancelar</a>";
+											echo "<a href='DispensadorPage.php' class='btn btn-danger'>Cancelar</a>";		
+											$msn="<div class='alert alert-success'>
+ 								               <a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a>
+        								        <strong>Actualizar Dispensador!</strong> Puedes editar Nombre y Serial del Dispensador seleccionado.
+          									    </div>";
+             							    echo $msn;						
 											if (isset($_POST['btnAction'])) {
-												$csLogica->actualizarDispensador( $_POST['txt_nombre'], $_POST['txt_serial'],$_GET['id_dispensador']);												
+												$csLogica->actualizarDispensador( $_POST['txt_nombre'], $_POST['txt_serial'],$_GET['id_dispensador']);
+												header('Location: DispensadorPage.php');					
 											}
 											break;
 										default:

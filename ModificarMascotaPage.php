@@ -36,12 +36,13 @@
 						</div>
 					  <div class="col-md-12">
 						  <label for="txt_fecha_nac">Fecha de Nacimiento</label>
-						  <input type="date" format="aaaa-mm-dd" name="txt_fecha_nac" id="txt_fecha_nac" class="form-control">
+						  <input type="date" format="aaaa-mm-dd" name="txt_fecha_nac" id="txt_fecha_nac" value="<?php echo $fecha_nac; ?>" class="form-control">
 						</div>
 					  	<div class="col-md-12">
 						  <label for="txt_genero">Genero</label>
-						  <select name="txt_genero" id="txt_genero" class="form-control">
-									<option  value="hembra">Hembra</option>
+						  <select name="txt_genero" id="txt_genero"  class="form-control">
+						  			<option value=""><?php echo $genero; ?></option>
+									<option value="hembra">Hembra</option>
 									<option value="macho">Macho</option>
 							</select>
 						</div>
@@ -64,7 +65,7 @@
 					  	<div class="col-md-12">
 						  <label for="txt_">Raza</label>
 						  <select lang="es" name="cboxRaza" id="cboxRaza" class="form-control">
-							  
+						  
 						  </select>
 						</div>
 					  	<div class="col-md-6">

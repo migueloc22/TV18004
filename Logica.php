@@ -184,7 +184,6 @@
                 echo $msn;
             }
             
-            
             $sentencia->close();
         }
         function eliminarUsuario( $id_usuario)

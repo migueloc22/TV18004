@@ -66,9 +66,17 @@
 										// echo $correo.$pass;
 										if ($csLogica->SessionUser($correo,$pass)) {
 											header('Location: MascotaPage.php');
-											echo "Correo o cantraseña son correcto";
+											$msn="<div class='alert alert-success'>
+                								<a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a>
+                								<strong>Bienvenido!</strong> Correo y contraseña son correctos.
+              									</div>";
+                							echo $msn;
 										} else {
-											echo "Correo o cantraseña son incorrecto";
+											$msn="<div class='alert alert-danger'>
+                								<a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a>
+                								<strong>Error!</strong> Correo o contraseña son incorrectos.
+              									</div>";
+                							echo $msn;
 										}
 										
 									}
