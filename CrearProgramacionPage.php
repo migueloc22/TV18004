@@ -183,7 +183,7 @@
 							?> </label>
 						</div>
 						<div class="col-md-3">
-							<input type="time" name="" id="" <?php echo $vlPorcion1; ?> class="form-control">
+							<input type="time" name="txt_porcion1" id="" <?php echo $vlPorcion1; ?> class="form-control">
 						</div>
 						<div class="col-md-3">
 							<label for="">Porción dos:   
@@ -195,7 +195,7 @@
 							?> </label>
 						</div>
 						<div class="col-md-3">
-							<input type="time" name="" id="" <?php echo $vlPorcion2; ?> class="form-control">
+							<input type="time" name="txt_porcion2" id="" <?php echo $vlPorcion2; ?> class="form-control">
 						</div>
 						<div class="col-md-3">
 							<label for="">Porción tres:   
@@ -207,7 +207,7 @@
 							?> </label>
 						</div>
 						<div class="col-md-3">
-							<input type="time" name="" id="" <?php echo $vlPorcion3; ?> class="form-control">
+							<input type="time" name="txt_porcion3" id="" <?php echo $vlPorcion3; ?> class="form-control">
 						</div>
 						<div class="col-md-3">
 							<label for="">Porción cuatro:   
@@ -219,8 +219,26 @@
 							?> </label>
 						</div>
 						<div class="col-md-3">
-							<input type="time" name="" id="" <?php echo $vlPorcion4; ?> class="form-control">
+							<input type="time" name="txt_porcion4" id="" <?php echo $vlPorcion4; ?> class="form-control">
 						</div> 	
+						<div class="col-md-12">
+							
+							<br>
+							<input type="submit" name="btnProgramar" value="Programar Dispensador" class="btn btn-primary">
+							<p>     
+							</p>
+						</div>
+						<?php 
+							if (isset($_POST['btnProgramar'])) {
+								$fecha=NOW();
+								$cantidad_dia=$porcion_dia;
+								$fk_id_detalle = $consulta_dtCategoria[0]['id_dt_categoria'];	
+								$fk_id_mascota = $consultaMascotas[0]['id_mascota'];	
+								$fk_id_dispensador = $consultaDispensador[0]['id_dispensador']; 
+										
+								$csLogica->crearProgramacion($fecha,$cantidad_dia,$fk_id_detalle,$fk_id_mascota,$fk_id_dispensador);
+							}
+						?>
 						<?php  
 								}
 								

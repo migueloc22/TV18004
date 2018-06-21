@@ -226,6 +226,33 @@
             }
             $sentencia->close();
         }
+
+        function crearProgramacion($fecha,$cantidad_dia,$fk_id_detalle,$fk_id_mascota,$fk_id_dispensador)
+        {
+            $sentencia=$this->cnn->prepare("INSERT INTO programacion ( fecha, cantidad_dia, fk_id_detalle, fk_id_mascota, fk_id_dispensador) VALUES (?,?,?,?,?)");
+            $sentencia->bind_param('sssss', $fecha1,$cantidad_dia1,$fk_id_detalle1,$fk_id_mascota1,$fk_id_dispensador1);
+            $fecha1=$fecha;
+            $cantidad_dia1=$cantidad_dia;
+            $fk_id_detalle1=$fk_id_detalle;
+            $fk_id_mascota1=$fk_id_mascota;
+            $fk_id_dispensador1=$fk_id_dispensador;
+            
+            if ($sentencia->execute()) {
+                $msn="<div class='alert alert-success'>
+                <a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a>
+                <strong>Dispensador Programado!</strong> Programación Exitosa.
+              </div>";
+                echo $msn;
+            } else {
+                $msn="<div class='alert alert-danger'>
+                <a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a>
+                <strong>Error!</strong> Programación Fallida.
+              </div>";
+                echo $msn;
+            }
+            $sentencia->close();        
+        }
+
         function consulta($tabla)
         {
             $query='SELECT * FROM '.$tabla;
