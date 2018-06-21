@@ -15,7 +15,7 @@
 		<div style="height: 55px"></div>
 		<div class="panel">
 			<div class="panel-body">
-				<h3 class="panel-heading">Programación</h3>
+				<h3 class="panel-heading">Calcular Alimento</h3>
 				  <form action="" method="post">
 					  	<div class="col-md-12">
 						  <label for="cbox_marca">Marca</label>
@@ -47,7 +47,7 @@
 									$consultaDispensador = array();
 									$consultaDispensador= $csLogica->consulta2("dispensador","WHERE fk_id_usuario=".$userSession[0]["id_usuario"]);    
 									for ($i=0; $i <count($consultaDispensador) ; $i++) { 
-											echo "<option value='".$consultaDispensador[$i] ["id_dispanador"]."'>".$consultaDispensador[$i] ["nombre"]."</option>";
+											echo "<option value='".$consultaDispensador[$i] ["id_dispensador"]."'>".$consultaDispensador[$i] ["nombre"]."</option>";
 									}
 								?>
 						  </select>
@@ -65,6 +65,8 @@
 							
 							<br>
 							<input type="submit" name="btnCalcular" value="Calcular" class="btn btn-primary">
+							<p>     
+							</p>
 						</div>
 						<?php
 							if (isset($_POST['btnCalcular'])) {
@@ -161,30 +163,60 @@
 									}
 									
 									$porcion_hora = ($porcion_dia/$cboxHora);
-									echo "Porcion dia $porcion_dia porcion hora $porcion_hora";
+									echo "<p>     
+										 </p>" ;
+									echo "<B>Porción que debe consumir al día: </B>" ; 
+									echo intval($porcion_dia);
+									echo " Gramos";
+									echo "<p>     
+										 </p>" ;
 								
 						?>
 						<br>
 						<div class="col-md-3">
-							<label for="">Porción uno</label>
+							<label for="">Porción uno:   
+							<?php
+								if ($vlPorcion1=="" ) {
+									echo intval($porcion_hora);
+									echo " Gramos";
+								}
+							?> </label>
 						</div>
 						<div class="col-md-3">
 							<input type="time" name="" id="" <?php echo $vlPorcion1; ?> class="form-control">
 						</div>
 						<div class="col-md-3">
-							<label for="">Porción dos</label>
+							<label for="">Porción dos:   
+							<?php
+								if ($vlPorcion2=="" ) {
+									echo intval($porcion_hora);
+									echo " Gramos";
+								}
+							?> </label>
 						</div>
 						<div class="col-md-3">
 							<input type="time" name="" id="" <?php echo $vlPorcion2; ?> class="form-control">
 						</div>
 						<div class="col-md-3">
-							<label for="">Porción tres</label>
+							<label for="">Porción tres:   
+							<?php
+								if ($vlPorcion3=="" ) {
+									echo intval($porcion_hora);
+									echo " Gramos";
+								}
+							?> </label>
 						</div>
 						<div class="col-md-3">
 							<input type="time" name="" id="" <?php echo $vlPorcion3; ?> class="form-control">
 						</div>
 						<div class="col-md-3">
-							<label for="">Porción cuatro</label>
+							<label for="">Porción cuatro:   
+							<?php
+								if ($vlPorcion4=="" ) {
+									echo intval($porcion_hora);
+									echo " Gramos";
+								}
+							?> </label>
 						</div>
 						<div class="col-md-3">
 							<input type="time" name="" id="" <?php echo $vlPorcion4; ?> class="form-control">
