@@ -30,6 +30,9 @@
 								for ($i=0; $i <count($consultaMarca) ; $i++) { 
 									echo "<option value='".$consultaMarca[$i] ["id_marca"]."'>".$consultaMarca[$i] ["marca"]."</option>";
 								}
+
+								$consultaProgramacion= array();
+								$consultaProgramacion= $csLogica->consulta2("programacion","WHERE id_programcion=".$_GET['id_programcion']);
 							?>
 						  </select>
 						</div>
@@ -228,20 +231,30 @@
 							<p>     
 							</p>
 						</div>
-						<?php 
+						
+						<?php
 							if (isset($_POST['btnProgramar'])) {
-								$fecha=NOW();
+								if ($vlPorcion1=="" ) {
+										$hora=$_POST['txt_porcion1'];
+										$porcion=$porcion_hora;
+										$estado = "0";	
+										$fk_id_programacion = $consultaProgramacion[0]['id_programcion'];	
+																				
+										$csLogica->programar($hora,$porcion,$estado,$fk_id_programacion);
+								}
+							}
+						?>
+
+						<?php  
+								}
+								$fecha="2018-06-22";
 								$cantidad_dia=$porcion_dia;
 								$fk_id_detalle = $consulta_dtCategoria[0]['id_dt_categoria'];	
 								$fk_id_mascota = $consultaMascotas[0]['id_mascota'];	
 								$fk_id_dispensador = $consultaDispensador[0]['id_dispensador']; 
 										
 								$csLogica->crearProgramacion($fecha,$cantidad_dia,$fk_id_detalle,$fk_id_mascota,$fk_id_dispensador);
-							}
-						?>
-						<?php  
-								}
-								
+
 							}
 						?>
 				  </form>

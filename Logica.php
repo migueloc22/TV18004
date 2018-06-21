@@ -238,6 +238,22 @@
             $fk_id_dispensador1=$fk_id_dispensador;
             
             if ($sentencia->execute()) {
+                
+            } else {
+                
+            }
+            $sentencia->close();        
+        }
+        function programar($hora,$porcion,$estado,$fk_id_programacion)
+        {
+            $sentencia=$this->cnn->prepare("INSERT INTO detalle_programacion ( hora, porcion, estado, fk_id_programacion) VALUES (?,?,?,?)");
+            $sentencia->bind_param('ssss', $hora1,$porcion1,$estado1,$fk_id_programacion1);
+            $hora1=$hora;
+            $porcion1=$porcion;
+            $estado1=$estado;
+            $fk_id_programacion1=$fk_id_programacion;
+            
+            if ($sentencia->execute()) {
                 $msn="<div class='alert alert-success'>
                 <a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a>
                 <strong>Dispensador Programado!</strong> Programación Exitosa.

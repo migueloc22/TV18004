@@ -55,7 +55,7 @@
 								 echo "<td>
 										 <a href='ModificarMascotaPage.php?id_mascota=".$consultaMascota[$i]["id_mascota"]."' class='aling-center'><span class='glyphicon icon-defaul glyphicon-edit'></a>
 										 <a href='CrearProgramacionPage.php?id_mascota=".$consultaMascota[$i]["id_mascota"]."' class='aling-center'><span class='glyphicon icon-defaul glyphicon-calendar'></a>
-										 <a href='MascotaPage.php?id_mascota=".$consultaMascota[$i]["id_mascota"]."' class='aling-center'><span class='glyphicon icon-defaul glyphicon-eye-open'></a>										 
+										 <a href='VerProgramacionPage.php?id_mascota=".$consultaMascota[$i]["id_mascota"]."' class='aling-center'><span class='glyphicon icon-defaul glyphicon-eye-open'></a>										 
 										 <a href='MascotaPage.php?id_mascota=".$consultaMascota[$i]["id_mascota"]."&action=eliminar' class='aling-center'><span class='glyphicon icon-danger glyphicon-remove'></a>
 									 </td>";
 								 echo "</tr>";
