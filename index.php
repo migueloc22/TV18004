@@ -54,7 +54,7 @@
 										</div>
 									</div>				
 									<div class="form-group">
-										<a href="CrearUserPage.php" class="aling-center">Registrar</a>
+										<a href="CrearUserPage.php" class="aling-center">Regístrate</a>
 									</div>				
 								</div>
 							</div>

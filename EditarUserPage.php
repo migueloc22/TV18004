@@ -69,7 +69,9 @@
                                     $id_usuario=$userSession[0]["id_usuario"];
                                     $csLogica->actualizarUsuario( $nombres, $apellido, $celular, $correo, $pass, $fk_idCiudad, $id_usuario);
                                     $consultaUsuario= array();
-                                    $_SESSION ['user'][]=$csLogica->consulta2("usuario","WHERE id_usuario=".$id_usuario);
+                                    $consultaUsuario=$csLogica->consulta2("usuario","WHERE id_usuario=".$id_usuario);
+                                   // session_destroy();
+                                     $_SESSION ['user']=$consultaUsuario;
                             
                             }
                             ?>
