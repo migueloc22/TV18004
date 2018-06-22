@@ -9,8 +9,8 @@
         include "template/encabezado.php";
         if (!isset($_GET['id_usuario'])||$_GET['id_usuario']==0||$_GET['id_usuario']=='') {
             header('Location: EditarUserPage.php');
-        }
-        $csUsuario = array();
+		}
+		$csUsuario = array();
         $csUsuario= $csLogica->consulta2("usuario","WHERE id_usuario=".$_GET['id_usuario']);
         $id_usuario=$csUsuario[0]['id_usuario'];
         $nombres=$csUsuario[0]['nombres'];
@@ -19,7 +19,6 @@
         $correo=$csUsuario[0]['correo'];
         $pass=$csUsuario[0]['pass'];
         $fk_idCiudad=$csUsuario[0]['fk_idCiudad'];
-        
 	?>
 	<script type="text/javascript">
 		$('#lngInicio').attr('class','active');
@@ -28,63 +27,52 @@
 		<div style="height: 55px"></div>
 		<div class="panel col-md-8 col-md-offset-2">
 			<div class="panel-body">
-				<h3 class="panel-heading text-center">Actualizar Información de la Mascota</h3>
+				<h3 class="panel-heading text-center">Actualizar Información Personal</h3>
 				  <form action=""  method="post">
 					  	<div class="col-md-12">
-						  <label for="txt_nombre">Nombre</label>
-						  <input type="text" name="txt_nombre" id="txt_nombre" value="<?php echo $nombre; ?>" class="form-control">
+						  <label for="txt_nombre">Nombres</label>
+						  <input type="text" name="txt_nombre" id="txt_nombre" value="<?php echo $nombres; ?>" class="form-control">
 						</div>
-					  <div class="col-md-12">
-						  <label for="txt_fecha_nac">Fecha de Nacimiento</label>
-						  <input type="date" format="aaaa-mm-dd" name="txt_fecha_nac" id="txt_fecha_nac" value="<?php echo $fecha_nac; ?>" class="form-control">
-						</div>
-					  	<div class="col-md-12">
-						  <label for="txt_genero">Genero</label>
-						  <select name="txt_genero" id="txt_genero"  class="form-control">
-						  			<option value=""><?php echo $genero; ?></option>
-									<option value="hembra">Hembra</option>
-									<option value="macho">Macho</option>
-							</select>
-						</div>
-					  	<div class="col-md-12">
-						  <label for="txt_peso">Peso</label>
-						  <input type="number" name="txt_peso" id="txt_peso" value="<?php echo $peso; ?>" class="form-control">
-						</div>
-					  	<div class="col-md-12">
-						  <label for="txt_">Tipo Mascota</label>
-						  <select  name="cboxTpMascota" id="cboxTpMascota" class="form-control">
-								<?php
-									$consultaTpMascota = array();
-									$consultaTpMascota= $csLogica->consulta("tipomascota");    
-									for ($i=0; $i <count($consultaTpMascota) ; $i++) { 
-											echo "<option value='".$consultaTpMascota[$i] ["id_Mascotas"]."'>".$consultaTpMascota[$i] ["tpMascota"]."</option>";
-									}
-								?>
-						  </select>
-						</div>
-					  	<div class="col-md-12">
-						  <label for="txt_">Raza</label>
-						  <select lang="es" name="cboxRaza" id="cboxRaza" class="form-control">
-						  
-						  </select>
-						</div>
-					  	<div class="col-md-6">
-							  <br>
-							<?php
-								if (isset($_GET['id_mascota'])) {
-									if (isset($_POST['btnAction'])) {
-										if ($_POST['cboxTpMascota']=="2") {
-											$foto="perro.jpg";
-										} else {
-											$foto="gato.jpg";
-										}
-										$csLogica->actualizarMascota( $_POST['txt_nombre'], $_POST['txt_genero'], $foto, $_POST['txt_peso'], date('Y/m/d',strtotime($_POST['txt_fecha_nac'])), $_POST['cboxRaza'], $_GET['id_mascota']);											
-									}
-								}
-								else {
-									header('Location: MascotaPage.php');
-								}
-							?>
+						<div class="form-group">
+                        <label for="">Apellidos</label>
+                        <input required  type="text" name="txt_apellido" id="txt_apellido" value="<?php echo $apellido; ?>" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label for="">Departamento</label>
+                        <Select id="slDepartamento"   class="form-control">
+                            <?php
+                                $csLogica=new Logica();
+                                $consultaDepartamento = array();
+                                $consultaDepartamento= $csLogica->consulta("departamento");    
+                                for ($i=0; $i <count($consultaDepartamento) ; $i++) { 
+                                    echo "<option value='".$consultaDepartamento[$i] ["id_departamento"]."'>".$consultaDepartamento[$i] ["nombre"]."</option>";
+                                }
+                            ?>
+                        </Select>
+                    </div>
+                    <div class="form-group">
+                        <label for="">ciudad</label>
+                        <Select id="slCiudad" name="txt_fk_idCiudad" class="form-control">
+                            
+                        </Select>
+                    </div>
+                    <div class="form-group">
+                        <label for="txt_celular">Celular</label>
+                        <input required  type="number" name="txt_celular" id="txt_celular" value="<?php echo $celular; ?>" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label for="txt_correo">Correo</label>
+                        <input required  type="email" name="txt_correo" id="txt_correo" value="<?php echo $correo; ?>" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label for="txt_correo">Contraseña</label>
+                        <input required  type="email" name="txt_correo" id="txt_correo" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label for="txt_correo">Repetir Contraseña</label>
+                        <input required  type="email" name="txt_correo" id="txt_correo" class="form-control">
+                    </div>
+					
 							<input type="submit" class="btn btn-primary" name="btnAction" value="Actualizar">
 							<?php
 								if(isset($_POST['btnAction']))
@@ -99,14 +87,6 @@
 		</div>
 	  
 	</div>
-	<script>
-        $(document).ready(function(){
-            $("#cboxRaza").load("CargaDatos.php?id_tpMascota="+$("#cboxTpMascota").val()+'&Option=cargaRaza');
-            $("#cboxTpMascota").change(function() {
-                $("#cboxRaza").load("CargaDatos.php?id_tpMascota="+$("#cboxTpMascota").val()+'&Option=cargaRaza');
-                });
-        })
-    </script>
 	
 	<?php 
 		include "template/pie_pagina.php";

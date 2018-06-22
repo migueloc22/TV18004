@@ -38,7 +38,8 @@
  								               <a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a>
         								        <strong>Actualizar Dispensador!</strong> Puedes editar Nombre y Serial del Dispensador seleccionado.
           									    </div>";
-             							    echo $msn;						
+											echo $msn;
+											
 											if (isset($_POST['btnAction'])) {
 												$csLogica->actualizarDispensador( $_POST['txt_nombre'], $_POST['txt_serial'],$_GET['id_dispensador']);
 												header('Location: DispensadorPage.php');					

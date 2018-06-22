@@ -21,14 +21,22 @@
 		$filter="WHERE fk_id_TpMascotas IN(SELECT fk_id_tpMascotas FROM raza WHERE id_raza=".$csMascota[0]['fk_id_raza'].")";
 		$consultaMarca= $csLogica->consulta2("marca",$filter); 
 		$marca=$consultaMarca[0]['marca'];
+/*
+		$consulta_dtCategoria = array();
+		$consulta_dtCategoria= $csLogica->consulta2("categoria","WHERE id_categoria=".$_GET['id_categoria']);
+		$categoria = $consulta_dtCategoria[0]['nombre'];
+		*/		
 
 		$consultaDispensador = array();
 		$consultaDispensador= $csLogica->consulta2("dispensador","WHERE fk_id_usuario=".$userSession[0]["id_usuario"]);    
 		$dispensador = $consultaDispensador[0]['nombre'];	
-
-		$csMascota = array();
-		$csMascota= $csLogica->consulta2("mascotas","WHERE id_mascota=".$_GET['id_mascota']);
-
+		
+	/* $csProg = array();
+        $csProg= $csLogica->consulta2("mascotas","WHERE id_mascota=".$_GET['id_mascota']);
+		$consultaProgramacion = array();
+		$filter="WHERE fk_id_mascota IN(SELECT fk_id_usuario FROM mascotas WHERE id_mascota=".$csProg[0]['fk_id_usuario'].")";
+		$consultaProgramacion= $csLogica->consulta2("cantidad_dia",$filter); 
+		$porcionDia = $consultaProgramacion[0]['cantidad_dia'];*/
 		
 							
 	?>
@@ -113,7 +121,14 @@
 							<?php
 								if(isset($_POST['btnAction']))
 								{
-									header('Location: CrearProgramacionPage.php');
+									$filter="WHERE fk_id_usuario=".$userSession[0]["id_usuario"];
+									$consultaMascota= $csLogica->consulta2("mascotas",$filter);    
+							 		for ($i=0; $i <count($consultaMascota) ; $i++) { 
+								 		 echo "<td>
+										 <a href='CrearProgramacionPage.php?id_mascota=".$consultaMascota[$i]["id_mascota"]."' class='aling-center'><span class='glyphicon icon-defaul glyphicon-calendar'></a>
+										 </td>";
+								 		 echo "</tr>";
+							 		} 
 								}
 							?>
 						</div>

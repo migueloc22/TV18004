@@ -247,7 +247,7 @@
 
 						<?php  
 								}
-								$fecha="2018-06-22";
+								$fecha="2018-06-22"; //AUTOMATICO
 								$cantidad_dia=$porcion_dia;
 								$fk_id_detalle = $consulta_dtCategoria[0]['id_dt_categoria'];	
 								$fk_id_mascota = $consultaMascotas[0]['id_mascota'];	
