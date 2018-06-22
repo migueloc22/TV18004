@@ -161,7 +161,7 @@
         }
         function actualizarUsuario( $nombres, $apellido, $celular, $correo, $pass, $fk_idCiudad,$id_usuario)
         {
-            $sentencia=$this->cnn->prepare("UPDATE usuario SET nombres=?,apellido=?,celular=?,correo=?,pass=?,fk_idCiudad=? WHERE id_usuario=?,");
+            $sentencia=$this->cnn->prepare("UPDATE usuario SET nombres=?,apellido=?,celular=?,correo=?,pass=?,fk_idCiudad=? WHERE id_usuario=?");
             $sentencia->bind_param('sssssss', $nombres1, $apellido1, $celular1, $correo1, $pass1, $fk_idCiudad1,$id_usuario1);
             $nombres1=$nombres;
             $apellido1=$apellido;
@@ -236,21 +236,21 @@
             $fk_id_detalleCategoria1=$fk_id_detalleCategoria;
             $fk_id_mascota1=$fk_id_mascota;
             $fk_id_dispensador1=$fk_id_dispensador;
+            $respuesta=0;
             
             if ($sentencia->execute()) {
+                $respuesta=$this->cnn->insert_id;
                 
-            } else {
-                
-            }
+            } 
+            return $respuesta;
             $sentencia->close();        
         }
-        function programar($hora,$porcion,$estado,$fk_id_programacion)
+        function crearDetalle_Programacion($hora,$porcion,$fk_id_programacion)
         {
-            $sentencia=$this->cnn->prepare("INSERT INTO detalle_programacion ( hora, porcion, estado, fk_id_programacion) VALUES (?,?,?,?)");
-            $sentencia->bind_param('ssss', $hora1,$porcion1,$estado1,$fk_id_programacion1);
+            $sentencia=$this->cnn->prepare("INSERT INTO detalle_programacion ( hora, porcion, fk_id_programacion) VALUES (?,?,?)");
+            $sentencia->bind_param('sss', $hora1,$porcion1,$fk_id_programacion1);
             $hora1=$hora;
             $porcion1=$porcion;
-            $estado1=$estado;
             $fk_id_programacion1=$fk_id_programacion;
             
             if ($sentencia->execute()) {

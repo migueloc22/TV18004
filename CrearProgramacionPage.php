@@ -21,6 +21,7 @@
 						  <label for="cbox_marca">Marca</label>
 						  <select name="cbox_marca" id="cbox_marca" class="form-control" >
 							<?php
+								
 								$consultaMarca = array();
 								$consultaMascotas= array();
 								$consultaMascotas= $csLogica->consulta2("mascotas","WHERE id_mascota=".$_GET['id_mascota']);
@@ -31,8 +32,11 @@
 									echo "<option value='".$consultaMarca[$i] ["id_marca"]."'>".$consultaMarca[$i] ["marca"]."</option>";
 								}
 
-								$consultaProgramacion= array();
-								$consultaProgramacion= $csLogica->consulta2("programacion","WHERE id_programcion=".$_GET['id_programcion']);
+								//$consultaProgramacion= array();
+								//$consultaProgramacion= $csLogica->consulta2("programacion","WHERE id_programcion=".$_GET['id_programcion']);
+
+								$filter="WHERE fk_id_mascota =".$consultaMascotas[0]['id_mascota'];
+								$consultaProgramacion= $csLogica->consulta2("programacion",$filter); 
 							?>
 						  </select>
 						</div>
@@ -42,19 +46,7 @@
 							  
 						  </select>
 						</div>
-					  	<div class="col-md-12">
-						  <label for="">Dispensador</label>
-						  <select name="" id="" class="form-control" >
-							<option value="">ninguno</option>
-							<?php
-									$consultaDispensador = array();
-									$consultaDispensador= $csLogica->consulta2("dispensador","WHERE fk_id_usuario=".$userSession[0]["id_usuario"]);    
-									for ($i=0; $i <count($consultaDispensador) ; $i++) { 
-											echo "<option value='".$consultaDispensador[$i] ["id_dispensador"]."'>".$consultaDispensador[$i] ["nombre"]."</option>";
-									}
-								?>
-						  </select>
-						</div>
+					  	<!-- Dispensador -->
 					  	<div class="col-md-12">
 						  <label for="cboxHora">N Porcion</label>
 						  <select name="cboxHora" id="cboxHora" class="form-control">
@@ -166,8 +158,8 @@
 									}
 									
 									$porcion_hora = ($porcion_dia/$cboxHora);
-									echo "<p>     
-										 </p>" ;
+									echo "<br>     
+									</br>" ;
 									echo "<B>Porción que debe consumir al día: </B>" ; 
 									echo intval($porcion_dia);
 									echo " Gramos";
@@ -176,6 +168,21 @@
 								
 						?>
 						<br>
+						<div class="col-md-12">
+							<br>
+						  <label for="">Dispensador</label>
+						  <select name="" id="" class="form-control" >
+							<option value="">ninguno</option>
+							<?php
+									$consultaDispensador = array();
+									$consultaDispensador= $csLogica->consulta2("dispensador","WHERE fk_id_usuario=".$userSession[0]["id_usuario"]);    
+									for ($i=0; $i <count($consultaDispensador) ; $i++) { 
+											echo "<option value='".$consultaDispensador[$i] ["id_dispensador"]."'>".$consultaDispensador[$i] ["nombre"]."</option>";
+									}
+								?>
+						  </select> </br>
+						</div>
+
 						<div class="col-md-3">
 							<label for="">Porción uno:   
 							<?php
@@ -233,27 +240,57 @@
 						</div>
 						
 						<?php
-							if (isset($_POST['btnProgramar'])) {
-								if ($vlPorcion1=="" ) {
-										$hora=$_POST['txt_porcion1'];
-										$porcion=$porcion_hora;
-										$estado = "0";	
-										$fk_id_programacion = $consultaProgramacion[0]['id_programcion'];	
-																				
-										$csLogica->programar($hora,$porcion,$estado,$fk_id_programacion);
-								}
-							}
+								//ANTES ESTABA EL CÓDIGO Q GUARDABA EN TABLA PROGRAMAR
 						?>
 
 						<?php  
-								}
-								$fecha="2018-06-22"; //AUTOMATICO
+							if (isset($_POST['btnProgramar'])) {
+
+								$fecha=date ("Y-m-d");
 								$cantidad_dia=$porcion_dia;
 								$fk_id_detalleCategoria = $consulta_dtCategoria[0]['id_dt_categoria'];	
 								$fk_id_mascota = $consultaMascotas[0]['id_mascota'];	
 								$fk_id_dispensador = $consultaDispensador[0]['id_dispensador']; 
+								$id_programacion=$csLogica->crearProgramacion($fecha,$cantidad_dia,$fk_id_detalleCategoria,$fk_id_mascota,$fk_id_dispensador);
+
+								if ($cboxHora==1 ) {
+									$hora=$_POST['txt_porcion1'];
+									$porcion=$porcion_hora;	
 										
-								$csLogica->crearProgramacion($fecha,$cantidad_dia,$fk_id_detalleCategoria,$fk_id_mascota,$fk_id_dispensador);
+																			
+									$csLogica->crearDetalle_Programacion($hora,$porcion,$id_programacion);
+								}
+								elseif ( $cboxHora==2 ) {
+									$porcion=$porcion_hora;	
+									
+									
+									$csLogica->crearDetalle_Programacion($_POST['txt_porcion1'],$porcion,$id_programacion);
+									$csLogica->crearDetalle_Programacion($_POST['txt_porcion2'],$porcion,$id_programacion);
+								}
+								elseif ( $cboxHora==3 ) {
+									$porcion=$porcion_hora;	
+									
+									
+									$csLogica->crearDetalle_Programacion($_POST['txt_porcion1'],$porcion,$id_programacion);
+									$csLogica->crearDetalle_Programacion($_POST['txt_porcion2'],$porcion,$id_programacion);
+									$csLogica->crearDetalle_Programacion($_POST['txt_porcion3'],$porcion,$id_programacion);
+
+								}
+								else {
+									$porcion=$porcion_hora;	
+									
+									
+									$csLogica->crearDetalle_Programacion($_POST['txt_porcion1'],$porcion,$id_programacion);
+									$csLogica->crearDetalle_Programacion($_POST['txt_porcion2'],$porcion,$id_programacion);
+									$csLogica->crearDetalle_Programacion($_POST['txt_porcion3'],$porcion,$id_programacion);
+									$csLogica->crearDetalle_Programacion($_POST['txt_porcion4'],$porcion,$id_programacion);
+								}
+									
+								
+							}
+						
+								}
+								
 
 							}
 						?>

@@ -1,24 +1,12 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-	<meta charset="UTF-8">
+    <meta http-equiv="Content-Type" content="text/html" charset="utf-8">
 	<title></title>
 </head>
 <body>
 	<?php 
-        include "template/encabezado.php";
-        if (!isset($_GET['id_usuario'])||$_GET['id_usuario']==0||$_GET['id_usuario']=='') {
-            header('Location: EditarUserPage.php');
-		}
-		$csUsuario = array();
-        $csUsuario= $csLogica->consulta2("usuario","WHERE id_usuario=".$_GET['id_usuario']);
-        $id_usuario=$csUsuario[0]['id_usuario'];
-        $nombres=$csUsuario[0]['nombres'];
-        $apellido=$csUsuario[0]['apellido'];
-        $celular=$csUsuario[0]['celular'];
-        $correo=$csUsuario[0]['correo'];
-        $pass=$csUsuario[0]['pass'];
-        $fk_idCiudad=$csUsuario[0]['fk_idCiudad'];
+        include "template/encabezado.php";		
 	?>
 	<script type="text/javascript">
 		$('#lngInicio').attr('class','active');
@@ -29,13 +17,13 @@
 			<div class="panel-body">
 				<h3 class="panel-heading text-center">Actualizar Información Personal</h3>
 				  <form action=""  method="post">
-					  	<div class="col-md-12">
-						  <label for="txt_nombre">Nombres</label>
-						  <input type="text" name="txt_nombre" id="txt_nombre" value="<?php echo $userSession[0]["nombres"]; ?>" class="form-control">
+					  	<div class="form-group">
+						  <label for="txt_nombres">Nombres</label>
+						  <input required  type="text" name="txt_nombres" id="txt_nombres" value="<?php echo $userSession[0]["nombres"]; ?>" class="form-control">
 						</div>
 						<div class="form-group">
                         <label for="">Apellidos</label>
-                        <input required  type="text" name="txt_apellido" id="txt_apellido" value="<?php echo $apellido; ?>" class="form-control">
+                        <input required  type="text" name="txt_apellido" id="txt_apellido" value="<?php echo $userSession[0]["apellido"]; ?>" class="form-control">
                     </div>
                     <div class="form-group">
                         <label for="">Departamento</label>
@@ -51,35 +39,40 @@
                         </Select>
                     </div>
                     <div class="form-group">
-                        <label for="">ciudad</label>
+                        <label for="">Ciudad</label>
                         <Select id="slCiudad" name="txt_fk_idCiudad" class="form-control">
                             
                         </Select>
                     </div>
                     <div class="form-group">
                         <label for="txt_celular">Celular</label>
-                        <input required  type="number" name="txt_celular" id="txt_celular" value="<?php echo $celular; ?>" class="form-control">
+                        <input required  type="number" name="txt_celular" id="txt_celular" value="<?php echo $userSession[0]["celular"]; ?>" class="form-control">
                     </div>
                     <div class="form-group">
                         <label for="txt_correo">Correo</label>
-                        <input required  type="email" name="txt_correo" id="txt_correo" value="<?php echo $correo; ?>" class="form-control">
+                        <input required  type="email" name="txt_correo" id="txt_correo" value="<?php echo $userSession[0]["correo"]; ?>" class="form-control">
                     </div>
                     <div class="form-group">
-                        <label for="txt_correo">Contraseña</label>
-                        <input required  type="email" name="txt_correo" id="txt_correo" class="form-control">
-                    </div>
-                    <div class="form-group">
-                        <label for="txt_correo">Repetir Contraseña</label>
-                        <input required  type="email" name="txt_correo" id="txt_correo" class="form-control">
+                        <label for="txt_password">Contraseña</label>
+                        <input required  type="pass" name="txt_password" id="txt_password" value="<?php echo $userSession[0]["pass"]; ?>" class="form-control">
                     </div>
 					
-							<input type="submit" class="btn btn-primary" name="btnAction" value="Actualizar">
+							<input type="submit" class="btn btn-primary" name="btnAction" value="Actualizar Información">
 							<?php
-								if(isset($_POST['btnAction']))
-								{
-									header('Location: MascotaPage.php');
-								}
-							?>
+								if(isset($_POST['btnAction'])){
+                                    $nombres=$_POST['txt_nombres'];
+                                    $apellido=$_POST['txt_apellido'];
+                                    $celular=$_POST['txt_celular'];
+                                    $correo=$_POST['txt_correo'];
+                                    $pass=$_POST['txt_password'];
+                                    $fk_idCiudad=$_POST['txt_fk_idCiudad'];
+                                    $id_usuario=$userSession[0]["id_usuario"];
+                                    $csLogica->actualizarUsuario( $nombres, $apellido, $celular, $correo, $pass, $fk_idCiudad, $id_usuario);
+                                    $consultaUsuario= array();
+                                    $_SESSION ['user'][]=$csLogica->consulta2("usuario","WHERE id_usuario=".$id_usuario);
+                            
+                            }
+                            ?>
 						</div>
 				  </form>
 				  <div style="height: 500px"></div>
@@ -91,5 +84,15 @@
 	<?php 
 		include "template/pie_pagina.php";
 	?>
+
+    <script>
+        $(document).ready(function(){
+            $("#slCiudad").load("CargaDatos.php?id_departamento="+$("#slDepartamento").val()+'&Option=cargaCiudad');
+            $("#slDepartamento").change(function() {
+                $("#slCiudad").load("CargaDatos.php?id_departamento="+$("#slDepartamento").val()+'&Option=cargaCiudad');
+                });
+        })
+        
+    </script>
 </body>
 </html>

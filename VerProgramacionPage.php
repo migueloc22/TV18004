@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-	<meta charset="UTF-8">
+	<meta http-equiv="Content-Type" content="text/html" charset="utf-8">
 	<title></title>
 </head>
 <body>
@@ -31,9 +31,10 @@
 		$consultaDispensador= $csLogica->consulta2("dispensador","WHERE fk_id_usuario=".$userSession[0]["id_usuario"]);    
 		$dispensador = $consultaDispensador[0]['nombre'];	
 		
-		$csProg = array();
-    $csProg= $csLogica->consulta2("programacion","WHERE id_programcion=".$_GET['id_programcion']);
-		$CantidadDia = $csProg[0]['cantidad_dia'];
+		//$csProg = array();
+    $filter="WHERE fk_id_mascota =".$csMascota[0]['id_mascota'];
+		$consulta_cantidadDia= $csLogica->consulta2("programacion",$filter); 
+		$CantidadDia = $consulta_cantidadDia[0]['cantidad_dia'];
 		
 							
 	?>
