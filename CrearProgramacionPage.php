@@ -162,16 +162,31 @@
 									</br>" ;
 									echo "<B>Porción que debe consumir al día: </B>" ; 
 									echo intval($porcion_dia);
+									echo "<input type='hidden' id='hd_porcion_dia' name='hd_porcion_dia' value='$porcion_dia'>" ;
 									echo " Gramos";
 									echo "<p>     
 										 </p>" ;
+								//Colocar información para realizar el cálculo
+									echo " Marca:";
+									echo $marcaE = $_POST['cbox_marca'];	
+									echo "<input type='hidden' id='hd_marca' name='hd_marca' value='$marcaE'>" ;
+									echo " Categoria:";
+									echo $categoriaE = $_POST['cbox_categoria'];	
+									echo "<input type='hidden' id='hd_categoria' name='hd_categoria' value='$categoriaE'>" ;
+									echo " Porciones:";
+									echo $cboxHora;
+									echo "<input type='hidden' id='hd_cboxHora' name='hd_cboxHora' value='$cboxHora'>" ;
+									echo " Cantidad:";
+									echo $porcion_hora;
+									echo "<input type='hidden' id='hd_porcionHora' name='hd_porcionHora' value='$porcion_hora'>" ;
+
 								
 						?>
 						<br>
 						<div class="col-md-12">
 							<br>
 						  <label for="">Dispensador</label>
-						  <select name="" id="" class="form-control" >
+						  <select name="cboxDispensador" id="" class="form-control" >
 							<option value="">ninguno</option>
 							<?php
 									$consultaDispensador = array();
@@ -179,6 +194,7 @@
 									for ($i=0; $i <count($consultaDispensador) ; $i++) { 
 											echo "<option value='".$consultaDispensador[$i] ["id_dispensador"]."'>".$consultaDispensador[$i] ["nombre"]."</option>";
 									}
+									
 								?>
 						  </select> </br>
 						</div>
@@ -194,6 +210,7 @@
 						</div>
 						<div class="col-md-3">
 							<input type="time" name="txt_porcion1" id="" <?php echo $vlPorcion1; ?> class="form-control">
+						
 						</div>
 						<div class="col-md-3">
 							<label for="">Porción dos:   
@@ -244,19 +261,25 @@
 						?>
 
 						<?php  
-							if (isset($_POST['btnProgramar'])) {
+													
+								}
+							
+							}
 
+							if (isset($_POST['btnProgramar'])) {
+								$consulta_dtCategoria= $csLogica->consulta2("detalle_categoria","WHERE fk_id_categoria =".$_POST['hd_categoria']);
 								$fecha=date ("Y-m-d");
-								$cantidad_dia=$porcion_dia;
-								$fk_id_detalleCategoria = $consulta_dtCategoria[0]['id_dt_categoria'];	
-								$fk_id_mascota = $consultaMascotas[0]['id_mascota'];	
-								$fk_id_dispensador = $consultaDispensador[0]['id_dispensador']; 
+								$cantidad_dia= $_POST['hd_porcion_dia'];
+								$fk_id_detalleCategoria =$consulta_dtCategoria[0]['id_dt_categoria'];	
+								$fk_id_mascota = $_GET['id_mascota'];	
+								$fk_id_dispensador = $_POST['cboxDispensador']; 
 								$id_programacion=$csLogica->crearProgramacion($fecha,$cantidad_dia,$fk_id_detalleCategoria,$fk_id_mascota,$fk_id_dispensador);
 
+								$cboxHora= $_POST['hd_cboxHora'];
+								$porcion_hora= $_POST['hd_porcionHora'];
 								if ($cboxHora==1 ) {
 									$hora=$_POST['txt_porcion1'];
 									$porcion=$porcion_hora;	
-										
 																			
 									$csLogica->crearDetalle_Programacion($hora,$porcion,$id_programacion);
 								}
@@ -287,11 +310,6 @@
 								}
 									
 								
-							}
-						
-								}
-								
-
 							}
 						?>
 				  </form>

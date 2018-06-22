@@ -37,8 +37,11 @@
 
                 //Content
                 $mail->isHTML(true);                                  // Set email format to HTML
-                $mail->Subject = 'Apptivos Código de activación';
+                $mail->Subject = 'CiPetS Información de tu cuenta';
                 $mail->Body    = $html;
+                
+                
+
                 //$mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
 
                 $mail->send();

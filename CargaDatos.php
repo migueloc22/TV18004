@@ -1,5 +1,9 @@
-<meta charset="UTF-8">
+<head>
+	<meta http-equiv="Content-Type" content="text/html" charset="utf-8">
+	<title></title>
+</head>
 <?php
+//echo "<meta http-equiv='Content-Type' content='text/html' charset='utf-8'>";
         include "Logica.php";
         $csLogica=new Logica();
         switch ($_GET['Option']) {

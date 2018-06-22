@@ -67,7 +67,7 @@
                                 $apellido=$_POST['txt_apellido'];
                                 $celular=$_POST['txt_celular'];
                                 $correo=$_POST['txt_correo'];
-                                $pass="123456789";
+                                $pass=substr( md5(microtime()), 1, 8);
                                 $fk_idCiudad=$_POST['txt_fk_idCiudad'];
                                 $csLogica->crearUsuario( $nombres, $apellido, $celular, $correo, $pass, $fk_idCiudad);
                             }
