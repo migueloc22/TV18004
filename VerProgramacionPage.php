@@ -21,22 +21,19 @@
 		$filter="WHERE fk_id_TpMascotas IN(SELECT fk_id_tpMascotas FROM raza WHERE id_raza=".$csMascota[0]['fk_id_raza'].")";
 		$consultaMarca= $csLogica->consulta2("marca",$filter); 
 		$marca=$consultaMarca[0]['marca'];
-/*
-		$consulta_dtCategoria = array();
-		$consulta_dtCategoria= $csLogica->consulta2("categoria","WHERE id_categoria=".$_GET['id_categoria']);
-		$categoria = $consulta_dtCategoria[0]['nombre'];
-		*/		
 
+		$consulta_dtCategoria = array();
+		$filter="WHERE fk_idMarca =".$consultaMarca[0]['id_marca'];
+		$consulta_dtCategoria= $csLogica->consulta2("categoria",$filter); 
+		$categoria=$consulta_dtCategoria[0]['nombre'];
+			
 		$consultaDispensador = array();
 		$consultaDispensador= $csLogica->consulta2("dispensador","WHERE fk_id_usuario=".$userSession[0]["id_usuario"]);    
 		$dispensador = $consultaDispensador[0]['nombre'];	
 		
-	/* $csProg = array();
-        $csProg= $csLogica->consulta2("mascotas","WHERE id_mascota=".$_GET['id_mascota']);
-		$consultaProgramacion = array();
-		$filter="WHERE fk_id_mascota IN(SELECT fk_id_usuario FROM mascotas WHERE id_mascota=".$csProg[0]['fk_id_usuario'].")";
-		$consultaProgramacion= $csLogica->consulta2("cantidad_dia",$filter); 
-		$porcionDia = $consultaProgramacion[0]['cantidad_dia'];*/
+		$csProg = array();
+    $csProg= $csLogica->consulta2("programacion","WHERE id_programcion=".$_GET['id_programcion']);
+		$CantidadDia = $csProg[0]['cantidad_dia'];
 		
 							
 	?>
@@ -67,7 +64,7 @@
 						</div>
 						<div class="col-md-12">
 						  <label for="txt_categoria_marca">Categoría de Marca</label>
-						  <input type="text" name="txt_categoria_marca" id="txt_categoria_marca" value="<?php echo $peso; ?>" class="form-control">
+						  <input type="text" name="txt_categoria_marca" id="txt_categoria_marca" value="<?php echo $categoria; ?>" class="form-control">
 						</div>
 						<div class="col-md-12">
 						  <label for="txt_dispensador">Dispensador</label>
@@ -75,7 +72,7 @@
 						</div>
 						<div class="col-md-12">
 						  <label for="txt_porcion_dia">Porción de Alimento del Día</label>
-						  <input type="text" name="txt_porcion_dia" id="txt_porcion_dia" value="<?php echo $peso; ?>" class="form-control">
+						  <input type="text" name="txt_porcion_dia" id="txt_porcion_dia" value="<?php echo $CantidadDia; ?>" class="form-control">
 						</div>
 						<div class="col-md-12">
 						  <label for="txt_num_porciones">Número de Porciones</label>

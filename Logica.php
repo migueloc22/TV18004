@@ -227,13 +227,13 @@
             $sentencia->close();
         }
 
-        function crearProgramacion($fecha,$cantidad_dia,$fk_id_detalle,$fk_id_mascota,$fk_id_dispensador)
+        function crearProgramacion($fecha,$cantidad_dia,$fk_id_detalleCategoria,$fk_id_mascota,$fk_id_dispensador)
         {
-            $sentencia=$this->cnn->prepare("INSERT INTO programacion ( fecha, cantidad_dia, fk_id_detalle, fk_id_mascota, fk_id_dispensador) VALUES (?,?,?,?,?)");
-            $sentencia->bind_param('sssss', $fecha1,$cantidad_dia1,$fk_id_detalle1,$fk_id_mascota1,$fk_id_dispensador1);
+            $sentencia=$this->cnn->prepare("INSERT INTO programacion ( fecha, cantidad_dia, fk_id_detalleCategoria, fk_id_mascota, fk_id_dispensador) VALUES (?,?,?,?,?)");
+            $sentencia->bind_param('sssss', $fecha1,$cantidad_dia1,$fk_id_detalleCategoria1,$fk_id_mascota1,$fk_id_dispensador1);
             $fecha1=$fecha;
             $cantidad_dia1=$cantidad_dia;
-            $fk_id_detalle1=$fk_id_detalle;
+            $fk_id_detalleCategoria1=$fk_id_detalleCategoria;
             $fk_id_mascota1=$fk_id_mascota;
             $fk_id_dispensador1=$fk_id_dispensador;
             

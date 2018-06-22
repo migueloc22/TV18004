@@ -31,7 +31,7 @@
 				  <form action=""  method="post">
 					  	<div class="col-md-12">
 						  <label for="txt_nombre">Nombres</label>
-						  <input type="text" name="txt_nombre" id="txt_nombre" value="<?php echo $nombres; ?>" class="form-control">
+						  <input type="text" name="txt_nombre" id="txt_nombre" value="<?php echo $userSession[0]["nombres"]; ?>" class="form-control">
 						</div>
 						<div class="form-group">
                         <label for="">Apellidos</label>

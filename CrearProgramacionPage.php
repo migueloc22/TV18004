@@ -249,11 +249,11 @@
 								}
 								$fecha="2018-06-22"; //AUTOMATICO
 								$cantidad_dia=$porcion_dia;
-								$fk_id_detalle = $consulta_dtCategoria[0]['id_dt_categoria'];	
+								$fk_id_detalleCategoria = $consulta_dtCategoria[0]['id_dt_categoria'];	
 								$fk_id_mascota = $consultaMascotas[0]['id_mascota'];	
 								$fk_id_dispensador = $consultaDispensador[0]['id_dispensador']; 
 										
-								$csLogica->crearProgramacion($fecha,$cantidad_dia,$fk_id_detalle,$fk_id_mascota,$fk_id_dispensador);
+								$csLogica->crearProgramacion($fecha,$cantidad_dia,$fk_id_detalleCategoria,$fk_id_mascota,$fk_id_dispensador);
 
 							}
 						?>
