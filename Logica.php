@@ -1,5 +1,6 @@
 <?php
     session_start();
+    include("csCorreo.php");
     class Logica 
     {
         private $cnn;
@@ -32,6 +33,8 @@
                 <a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a>
                 <strong>Bienvenido!</strong> Registro Exitoso.
               </div>";
+              $csCorreo= new csCorreo();
+              $csCorreo->correo($correo , "La contraseña es ".$pass ,"ok");
                 echo $msn;
             } else {
                 $msn="<div class='alert alert-danger'>
