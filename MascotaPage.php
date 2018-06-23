@@ -38,7 +38,7 @@
 								<td>Foto</td>
 								<td>Nombre</td>
 								<td>Peso</td>
-								<td>Fecha de Nacimiento</td>
+								<td>Edad</td>  <!-- Fecha de Nacimiento -->
 								<td></td>
 							</tr>
 						</thead>
@@ -51,7 +51,14 @@
 								 echo "<td> <img class='img img-circle' style='height: auto; width: 50px;' src='img/".$consultaMascota[$i] ["foto"]."' alt='img/".$consultaMascota[$i] ["foto"]."'></td>";
 								 echo "<td>".$consultaMascota[$i] ["nombre"]."</td>";
 								 echo "<td>".$consultaMascota[$i] ["peso"]."</td>";
-								 echo "<td>". date('d-m-Y',strtotime($consultaMascota[$i] ["fecha_nac"]))."</td>";
+								 $fecha_nac =date('Y-m-d',strtotime($consultaMascota[0]['fecha_nac'])) ;
+								$fecha_actual=date ("Y-m-d"); 
+								$array_nacimiento = explode ( "-", $fecha_nac ); 
+								$array_actual = explode ( "-", $fecha_actual ); 
+								echo "<td>".$anos =  $array_actual[0] - $array_nacimiento[0]." años y ".$meses = $array_actual[1] - $array_nacimiento[1]." meses</td>"; // calculamos años y meses 
+								//echo "<td>".$meses = $array_actual[1] - $array_nacimiento[1]." meses</td>"; // calculamos meses 
+								$dias =  $array_actual[2] - $array_nacimiento[2]; // calculamos días
+								 
 								 echo "<td>
 										 <a href='ModificarMascotaPage.php?id_mascota=".$consultaMascota[$i]["id_mascota"]."' class='aling-center'><span class='glyphicon icon-defaul glyphicon-edit'></a>
 										 <a href='CrearProgramacionPage.php?id_mascota=".$consultaMascota[$i]["id_mascota"]."' class='aling-center'><span class='glyphicon icon-defaul glyphicon-calendar'></a>

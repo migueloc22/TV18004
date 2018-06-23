@@ -14,7 +14,7 @@
             try {
                 //Server settings
                 $mail -> setLanguage ( ' es ' , 'src/phpmailer.lang-es.php' );
-                $mail->SMTPDebug = 2;                                 // Enable verbose debug output
+                //$mail->SMTPDebug = 2;                                 // Enable verbose debug output LO COMENTARIE SALIA MUCHA BASURA
                 $mail->isSMTP();                                      // Set mailer to use SMTP
                 $mail->Host = 'smtp.gmail.com';  // Specify main and backup SMTP servers
                 $mail->SMTPAuth = true;                               // Enable SMTP authentication
@@ -37,7 +37,7 @@
 
                 //Content
                 $mail->isHTML(true);                                  // Set email format to HTML
-                $mail->Subject = 'CiPetS Información de tu cuenta';
+                $mail->Subject = 'CiPetS - Información de tu nueva cuenta';
                 $mail->Body    = $html;
                 
                 
@@ -48,7 +48,7 @@
                 echo $msn;
                 return true;
             } catch (Exception $e) {
-                echo 'El Mensaje no fue enviado Error: ', $mail->ErrorInfo;
+                echo 'Error - El Mensaje no fue enviado: ', $mail->ErrorInfo;
                 return false;
             }
         }

@@ -34,7 +34,7 @@
                 <strong>Bienvenido!</strong> Registro Exitoso.
               </div>";
               $csCorreo= new csCorreo();
-              $csCorreo->correo($correo , "La contraseña es ".$pass ,"ok");
+              $csCorreo->correo($correo , "Hola bienvenido(a) a CiPetS. Gracias por registrarte, tu contraseña es ".$pass ,"");
                 echo $msn;
             } else {
                 $msn="<div class='alert alert-danger'>
