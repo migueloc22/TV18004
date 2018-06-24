@@ -32,10 +32,37 @@
 		$dispensador = $consultaDispensador[0]['nombre'];	
 		
 		//$csProg = array();
+		/*
     $filter="WHERE fk_id_mascota =".$csMascota[0]['id_mascota'];
 		$consulta_cantidadDia= $csLogica->consulta2("programacion",$filter); 
 		$CantidadDia = $consulta_cantidadDia[0]['cantidad_dia'];
-		
+		$filter="WHERE fk_id_usuario=".$userSession[0]["id_usuario"];
+		$consultaMascota= $csLogica->consulta2("mascotas",$filter);*/
+		$filter="WHERE fk_id_mascota =".$csMascota[0]['id_mascota'];
+		$consulta_cantidadDia= $csLogica->consulta2("programacion",$filter); 
+		$CantidadDia = $consulta_cantidadDia[0]['cantidad_dia'];
+
+		$consulta_dtProgramacion = array();
+		$consulta_dtProgramacion1 = array();
+		$consulta_dtProgramacion2 = array();
+		$consulta_dtProgramacion3 = array();
+		$filter="WHERE fk_idMarca =".$consultaMarca[0]['id_marca'];
+		$consulta_dtProgramacion= $csLogica->consulta2("categoria",$filter); 
+		$filter="WHERE fk_id_categoria =".$consulta_dtProgramacion[0]['id_categoria'];
+		$consulta_dtProgramacion1= $csLogica->consulta2("detalle_categoria",$filter); 
+		$filter="WHERE fk_id_detalleCategoria =".$consulta_dtProgramacion1[0]['id_dt_categoria'];
+		$consulta_dtProgramacion2= $csLogica->consulta2("programacion",$filter); 
+		$filter="WHERE fk_id_programacion =".$consulta_dtProgramacion2[0]['id_programcion'];
+		$consulta_dtProgramacion3= $csLogica->consulta2("detalle_programacion",$filter); 
+		$porcion1=$consulta_dtProgramacion3[0]['porcion'];
+		$hora1=$consulta_dtProgramacion3[0]['hora'];
+		$porcion2=$consulta_dtProgramacion3[0]['porcion'];
+		$hora2=$consulta_dtProgramacion3[0]['hora'];
+		$porcion3=$consulta_dtProgramacion3[0]['porcion'];
+		$hora3=$consulta_dtProgramacion3[0]['hora'];
+		$porcion4=$consulta_dtProgramacion3[0]['porcion'];
+		$hora4=$consulta_dtProgramacion3[0]['hora'];
+
 							
 	?>
 	<script type="text/javascript">
@@ -73,7 +100,7 @@
 						</div>
 						<div class="col-md-12">
 						  <label for="txt_porcion_dia">Porción de Alimento del Día</label>
-						  <input type="text" name="txt_porcion_dia" id="txt_porcion_dia" value="<?php echo $CantidadDia; ?>" class="form-control">
+						  <input type="text" name="txt_porcion_dia" id="txt_porcion_dia" value="<?php echo $peso; ?>" class="form-control">
 						</div>
 						<div class="col-md-12">
 						  <label for="txt_num_porciones">Número de Porciones</label>
@@ -81,35 +108,35 @@
 						</div>
 						<div class="col-md-12">
 						  <label for="txt_porcion_1">Porción 1</label>
-						  <input type="text" name="txt_porcion_1" id="txt_porcion_1" value="<?php echo $peso; ?>" class="form-control">
+						  <input type="text" name="txt_porcion_1" id="txt_porcion_1" value="<?php echo $porcion1; ?>" class="form-control">
 						</div>
 						<div class="col-md-12">
 						  <label for="txt_hora_porcion_1">Hora Porción 1</label>
-						  <input type="text" name="txt_hora_porcion_1" id="txt_hora_porcion_1" value="<?php echo $peso; ?>" class="form-control">
+						  <input type="text" name="txt_hora_porcion_1" id="txt_hora_porcion_1" value="<?php echo $hora1; ?>" class="form-control">
 						</div>
 						<div class="col-md-12">
 						  <label for="txt_porcion_2">Porción 2</label>
-						  <input type="text" name="txt_porcion_2" id="txt_porcion_2" value="<?php echo $peso; ?>" class="form-control">
+						  <input type="text" name="txt_porcion_2" id="txt_porcion_2" value="<?php echo $porcion2; ?>" class="form-control">
 						</div>
 						<div class="col-md-12">
 						  <label for="txt_hora_porcion_2">Hora Porción 2</label>
-						  <input type="text" name="txt_hora_porcion_2" id="txt_hora_porcion_2" value="<?php echo $peso; ?>" class="form-control">
+						  <input type="text" name="txt_hora_porcion_2" id="txt_hora_porcion_2" value="<?php echo $hora2; ?>" class="form-control">
 						</div>
 						<div class="col-md-12">
 						  <label for="txt_porcion_3">Porción 3</label>
-						  <input type="text" name="txt_porcion_3" id="txt_porcion_3" value="<?php echo $peso; ?>" class="form-control">
+						  <input type="text" name="txt_porcion_3" id="txt_porcion_3" value="<?php echo $porcion3; ?>" class="form-control">
 						</div>
 						<div class="col-md-12">
 						  <label for="txt_hora_porcion_3">Hora Porción 3</label>
-						  <input type="text" name="txt_hora_porcion_3" id="txt_hora_porcion_3" value="<?php echo $peso; ?>" class="form-control">
+						  <input type="text" name="txt_hora_porcion_3" id="txt_hora_porcion_3" value="<?php echo $hora3; ?>" class="form-control">
 						</div>
 						<div class="col-md-12">
 						  <label for="txt_porcion_4">Porción 4</label>
-						  <input type="text" name="txt_porcion_4" id="txt_porcion_4" value="<?php echo $peso; ?>" class="form-control">
+						  <input type="text" name="txt_porcion_4" id="txt_porcion_4" value="<?php echo $porcion4; ?>" class="form-control">
 						</div>
 						<div class="col-md-12">
 						  <label for="txt_hora_porcion_4">Hora Porción 4</label>
-						  <input type="text" name="txt_hora_porcion_4" id="txt_hora_porcion_4" value="<?php echo $peso; ?>" class="form-control">
+						  <input type="text" name="txt_hora_porcion_4" id="txt_hora_porcion_4" value="<?php echo $hora4; ?>" class="form-control">
 						</div>
 
 					  	<div class="col-md-6">

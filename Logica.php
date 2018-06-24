@@ -3,7 +3,7 @@
     include("csCorreo.php");
     class Logica 
     {
-        private $cnn;
+        private $cnn;//->set_charset("utf8");
          function __construct() {
              $servidor="localhost";
              $usuario="root";
@@ -34,7 +34,7 @@
                 <strong>Bienvenido!</strong> Registro Exitoso.
               </div>";
               $csCorreo= new csCorreo();
-              $csCorreo->correo($correo , "Hola bienvenido(a) a CiPetS. Gracias por registrarte, tu contraseña es ".$pass ,"");
+              $csCorreo->correo($correo , "Hola bienvenido(a) a CiPetS. Gracias por registrarte, puedes cambiar la contraseña en Editar Usuario, tu contraseña es ".$pass ,"");
                 echo $msn;
             } else {
                 $msn="<div class='alert alert-danger'>
