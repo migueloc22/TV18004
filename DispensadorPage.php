@@ -79,8 +79,8 @@
 								echo "<td>".$consultaMascota[$i] ["nombre"]."</td>";
 								echo "<td>".$consultaMascota[$i] ["serial"]."</td>";
 								echo "<td>
-										<a href='DispensadorPage.php?action=actualizar&id_dispensador=".$consultaMascota[$i]["id_dispensador"]."&nombre=".$consultaMascota[$i]["nombre"]."&serial=".$consultaMascota[$i]["serial"]."' class='aling-center'><span class=' glyphicon icon-defaul glyphicon-edit'></a>
-										<a href='DispensadorPage.php?action=eliminar&id_dispensador=".$consultaMascota[$i]["id_dispensador"]."' class='aling-center'><span class='glyphicon icon-danger glyphicon-remove'></a>
+										<a href='DispensadorPage.php?action=actualizar&id_dispensador=".$consultaMascota[$i]["id_dispensador"]."&nombre=".$consultaMascota[$i]["nombre"]."&serial=".$consultaMascota[$i]["serial"]."' class='aling-center'><span class=' glyphicon icon-defaul glyphicon-edit' data-toggle='tooltip' title='Editar'></a>
+										<a href='DispensadorPage.php?action=eliminar&id_dispensador=".$consultaMascota[$i]["id_dispensador"]."' class='aling-center'><span class='glyphicon icon-danger glyphicon-remove' data-toggle='tooltip' title='Eliminar'></a>
 									</td>";
 								echo "</tr>";
 							} 
@@ -91,8 +91,11 @@
 			</div>
 		</div>
 	</div>
-	
-	
+	<script>
+			$(document).ready(function(){
+    			$('[data-toggle="tooltip"]').tooltip(); 
+			});
+	</script>
 	<?php 
 		include "template/pie_pagina.php";
 	?>

@@ -18,7 +18,7 @@
 				<h3 class="panel-header text-center">Mascotas</h3>
 				<div>
 					<div class="col-md-offset-11">
-						<a href="CrearMascotaPage.php" class="">
+						<a href="CrearMascotaPage.php" class="" data-toggle='tooltip' title='Agregar Mascota'>
 							<div class="text-center icon-plus">
 								<span class="glyphicon  glyphicon-plus"></span>
 							</div>
@@ -60,10 +60,10 @@
 								$dias =  $array_actual[2] - $array_nacimiento[2]; // calculamos días
 								 
 								 echo "<td>
-										 <a href='ModificarMascotaPage.php?id_mascota=".$consultaMascota[$i]["id_mascota"]."' class='aling-center'><span class='glyphicon icon-defaul glyphicon-edit'></a>
-										 <a href='CrearProgramacionPage.php?id_mascota=".$consultaMascota[$i]["id_mascota"]."' class='aling-center'><span class='glyphicon icon-defaul glyphicon-calendar'></a>
-										 <a href='VerProgramacionPage.php?id_mascota=".$consultaMascota[$i]["id_mascota"]."' class='aling-center'><span class='glyphicon icon-defaul glyphicon-eye-open'></a>										 
-										 <a href='MascotaPage.php?id_mascota=".$consultaMascota[$i]["id_mascota"]."&action=eliminar' class='aling-center'><span class='glyphicon icon-danger glyphicon-remove'></a>
+										 <a href='ModificarMascotaPage.php?id_mascota=".$consultaMascota[$i]["id_mascota"]."' class='aling-center'><span class='glyphicon icon-defaul glyphicon-edit' data-toggle='tooltip' title='Editar'></a>
+										 <a href='CrearProgramacionPage.php?id_mascota=".$consultaMascota[$i]["id_mascota"]."' class='aling-center'><span class='glyphicon icon-defaul glyphicon-calendar' data-toggle='tooltip' title='Programación'></a>
+										 <a href='VerProgramacionPage.php?id_mascota=".$consultaMascota[$i]["id_mascota"]."' class='aling-center'><span class='glyphicon icon-defaul glyphicon-eye-open' data-toggle='tooltip' title='Visualización'></a>										 
+										 <a href='MascotaPage.php?id_mascota=".$consultaMascota[$i]["id_mascota"]."&action=eliminar' class='aling-center'><span class='glyphicon icon-danger glyphicon-remove' data-toggle='tooltip' title='Eliminar'></a>
 									 </td>";
 								 echo "</tr>";
 							 } 
@@ -76,6 +76,11 @@
 			</div>
 		</div>
 	</div>
+	<script>
+			$(document).ready(function(){
+    			$('[data-toggle="tooltip"]').tooltip(); 
+			});
+	</script>
 	<?php 
 		include "template/pie_pagina.php";
 	?>
