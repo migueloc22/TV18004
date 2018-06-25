@@ -147,13 +147,15 @@
 								if(isset($_POST['btnAction']))
 								{
 									$filter="WHERE fk_id_usuario=".$userSession[0]["id_usuario"];
-									$consultaMascota= $csLogica->consulta2("mascotas",$filter);    
-							 		for ($i=0; $i <count($consultaMascota) ; $i++) { 
+									$consultaMascota= $csLogica->consulta2("mascotas",$filter);  
+									$filter="WHERE fk_id_usuario=".$consultaMascota[0]["id_mascota"];
+									$consultaMascota2= $csLogica->consulta2("mascotas",$filter);  
+							 		//for ($i=0; $i <count($consultaMascota) ; $i++) { 
 								 		 echo "<td>
-										 <a href='CrearProgramacionPage.php?id_mascota=".$consultaMascota[$i]["id_mascota"]."' class='aling-center'><span class='glyphicon icon-defaul glyphicon-calendar'></a>
+										 <a href='CrearProgramacionPage.php?id_mascota=".$consultaMascota2[0]["id_mascota"]."' class='aling-center'><span class='glyphicon icon-defaul glyphicon-calendar' data-toggle='tooltip' title='".$consultaMascota2[0]["nombre"]."'></a>
 										 </td>";
 								 		 echo "</tr>";
-							 		} 
+							 		//} 
 								}
 							?>
 						</div>
@@ -175,5 +177,10 @@
 	<?php 
 		include "template/pie_pagina.php";
 	?>
+	<script>
+			$(document).ready(function(){
+    			$('[data-toggle="tooltip"]').tooltip(); 
+			});
+	</script>
 </body>
 </html>
