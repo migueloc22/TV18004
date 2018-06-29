@@ -37,7 +37,7 @@
 
                 //Content
                 $mail->isHTML(true);                                  // Set email format to HTML
-                $mail->Subject = 'CiPetS - Información de tu nueva cuenta';
+                $mail->Subject = 'CiPetS - Informe de tu nueva cuenta / Muy Importante';
                 $mail->Body    = $html;
                 
                 

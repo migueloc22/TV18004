@@ -74,7 +74,7 @@
 									
 								
 								?>
-						  <input  type="submit" class="btn btn-primary" name="action" value="registro">
+						  <input  type="submit" class="btn btn-primary" name="action" value="Registrar">
 						</div>
 				  </form>
 				  <div style="height: 500px"></div>
