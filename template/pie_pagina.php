@@ -14,7 +14,7 @@
 			echo "<div class = 'col-md-4'>";
 				echo " <h2>¿Quienes Somos?</h2>" ;
 				echo " <p align='justify'>
-							CiPetS Feeder es un emprendimiento colombiano de base tecnológica que pretende mejorar la 
+							CiPetS es un emprendimiento colombiano de base tecnológica que pretende mejorar la 
 							nutrición de tu mascota a través de una alimentación programada y enfocada de forma particular. 
 						</p>" ;
 			echo "</div>";

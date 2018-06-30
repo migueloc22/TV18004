@@ -37,7 +37,7 @@
 							<tr>
 								<td>Foto</td>
 								<td>Nombre</td>
-								<td>Peso</td>
+								<td>Peso (Kg)</td>
 								<td>Edad</td>  <!-- Fecha de Nacimiento -->
 								<td></td>
 							</tr>

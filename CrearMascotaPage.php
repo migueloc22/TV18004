@@ -33,7 +33,7 @@
 							</select>
 						</div>
 					  	<div class="col-md-12">
-						  <label for="txt_peso">Peso</label>
+						  <label for="txt_peso">Peso (en Kg)</label>
 						  <input required type="number" name="txt_peso" id="txt_peso" class="form-control">
 						</div>
 					  	<div class="col-md-12">

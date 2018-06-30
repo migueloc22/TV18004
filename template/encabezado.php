@@ -24,7 +24,7 @@
 			        <span class='icon-bar'></span>                        
 			      </button>
 			      <a class='navbar-brand' href='#'>
-			      	<img class='logo' src='img/CiPetSmarca.png'>
+			      	<img class='logo' src='img/Imagen4.png'>
 			      </a>
 			    </div>
 			    <div class='collapse navbar-collapse' id='myNavbar'>

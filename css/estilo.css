@@ -74,3 +74,19 @@ footer
 .caja{
 	background-color: rgba(255, 255, 255, 0.884);
 }
+.navbar-default {
+    background-color: #ff8000a6;
+    border-color: #fd5f07;
+}
+.navbar-nav {
+    background-color: #fd5f077d;
+    color: #ffffff;
+}
+.navbar-default .navbar-nav>.active>a, .navbar-default .navbar-nav>.active>a:focus, .navbar-default .navbar-nav>.active>a:hover {
+    color: #ffffff;
+    background-color: #fd5d07d7;
+}
+.navbar-default .navbar-nav>li>a {
+    color: #ffffff;
+    background-color: #ff9101c7;
+}

@@ -31,9 +31,19 @@
 </head>
 	<body class="body">
 		<div class="container">
+		<div style="height: 80px"></div>
 			<div class="row">
-				<div style="height: 120px"></div>
-				<div class="col-sm-4 col-sm-offset-7">
+				
+				<div class="col-md-7">
+					<img  src='img/logo3.png'>
+					
+					<p style="height: 120px"></p>
+					<H1 style="color:white">
+					<font face="Comic Sans MS"><b>Cuida la salud de tu mascota, controlando su cantidad de alimento</b></font></H1>
+					
+				</div>
+				<div class="col-md-4">
+				<p style="height: 40px"></p>
 					<div class="panel caja" >
 						<form method="POST" action="#">
 							<div class="panel-body">
