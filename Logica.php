@@ -31,7 +31,7 @@
             if ($sentencia->execute()) {
                 $msn="<div class='alert alert-success'>
                 <a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a>
-                <strong>Bienvenido!</strong> Registro Exitoso.
+                <strong>Bienvenido!</strong> Registro exitoso, verificar tu correo para ingresar.
               </div>";
               $csCorreo= new csCorreo();
               $csCorreo->correo($correo , "Hola bienvenido(a) a CiPetS, gracias por registrarte. Tu Usuario es tu correo, puedes cambiar la contraseña en Editar Usuario, tu contraseña es ".$pass ,"");

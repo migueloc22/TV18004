@@ -90,3 +90,11 @@ footer
     color: #ffffff;
     background-color: #ff9101c7;
 }
+.navbar-default .navbar-nav>li>a:hover {
+    color: #c20909;
+    background-color: #ff9101c7;
+}
+.navbar-default .navbar-nav>.open>a, .navbar-default .navbar-nav>.open>a:focus, .navbar-default .navbar-nav>.open>a:hover {
+    color: #c20909;
+    background-color: #fd5d07d7;
+}

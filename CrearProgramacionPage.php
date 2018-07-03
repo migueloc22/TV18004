@@ -59,7 +59,7 @@
 						<div class="col-md-12">
 						  <label for="">Dispensador</label>
 						  <select name="cboxDispensador" id="" class="form-control" >
-							<option value="">ninguno</option>
+							<option value="">Ninguno</option>
 							<?php
 									$consultaDispensador = array();
 									$consultaDispensador= $csLogica->consulta2("dispensador","WHERE fk_id_usuario=".$userSession[0]["id_usuario"]);    
@@ -141,9 +141,16 @@
 									return $bisiesto; 
 								} 
 								// echo "$fecha_actual $fecha_nac" ;
+							
 								$consulta_dtCategoria= $csLogica->consulta2("detalle_categoria","WHERE fk_id_categoria ='$fk_id_categoria' ");
 								if (count($consulta_dtCategoria)) {
-									$porcion_dia = (($consulta_dtCategoria[0]['cant_max'] - $consulta_dtCategoria[0]['cant_min'])/2) + $consulta_dtCategoria[0]['cant_min'];
+									for ($i=0; $i <count($consulta_dtCategoria) ; $i++) {
+										if(($consulta_dtCategoria[$i]['peso_min'] <= $peso && $consulta_dtCategoria[$i]['peso_max'] >= $peso) && ($consulta_dtCategoria[$i]['edad_min'] <= $meses && $consulta_dtCategoria[$i]['edad_max'] >= $meses)){
+											$porcion_dia = (($consulta_dtCategoria[$i]['cant_max'] - $consulta_dtCategoria[$i]['cant_min'])/2) + $consulta_dtCategoria[$i]['cant_min'];
+										}
+										else{}
+									}
+									//$porcion_dia = (($consulta_dtCategoria[0]['cant_max'] - $consulta_dtCategoria[0]['cant_min'])/2) + $consulta_dtCategoria[0]['cant_min'];
 									$cboxHora=0;
 									$vlPorcion1="disabled";
 									$vlPorcion2="disabled";
@@ -218,7 +225,12 @@
 									$fk_id_detalleCategoria =$consulta_dtCategoria[0]['id_dt_categoria'];	
 									$fk_id_mascota = $_GET['id_mascota'];	
 									$fk_id_dispensador = $_POST['cboxDispensador']; 
-									$id_programacion=$csLogica->crearProgramacion($fecha,$cantidad_dia,$fk_id_detalleCategoria,$fk_id_mascota,$fk_id_dispensador);
+									if((strlen($fk_id_dispensador) == 0)|| (strlen($fk_id_dispensador) < 1)){
+										$fk_id_dispensador1=NULL;
+									}else{
+										$fk_id_dispensador1=$fk_id_dispensador;
+									}
+									$id_programacion=$csLogica->crearProgramacion($fecha,$cantidad_dia,$fk_id_detalleCategoria,$fk_id_mascota,$fk_id_dispensador1);
 									echo "<input type='hidden' id='hd_idProgramacion' name='hd_idProgramacion' value='$id_programacion'>" ;
 							
 									$consulta_dtCategoria = array();
