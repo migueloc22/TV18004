@@ -15,17 +15,30 @@
         $id_mascota=$csMascota[0]['id_mascota'];
         $nombre=$csMascota[0]['nombre'];
         $peso=$csMascota[0]['peso'];
-        $fecha_nac=$csMascota[0]['fecha_nac'];
-		
-		$consultaMarca = array();
-		$filter="WHERE fk_id_TpMascotas IN(SELECT fk_id_tpMascotas FROM raza WHERE id_raza=".$csMascota[0]['fk_id_raza'].")";
-		$consultaMarca= $csLogica->consulta2("marca",$filter); 
-		$marca=$consultaMarca[0]['marca'];
+				$fecha_nac=$csMascota[0]['fecha_nac'];
 
-		$consulta_dtCategoria = array();
+				$marca= array();
+				$consultaMarca = array();
+				$categoria = array();
+		//$filter="WHERE fk_id_TpMascotas IN(SELECT fk_id_tpMascotas FROM raza WHERE id_raza=".$csMascota[0]['fk_id_raza'].")";
+		//$consultaMarca= $csLogica->consulta2("marca",$filter); 
+		//$marca=$consultaMarca[0]['marca'];
+
+		/*$consulta_idMarca = array();
+		$consulta_dt_idCategoria = array();
 		$filter="WHERE fk_idMarca =".$consultaMarca[0]['id_marca'];
-		$consulta_dtCategoria= $csLogica->consulta2("categoria",$filter); 
-		$categoria=$consulta_dtCategoria[0]['nombre'];
+		$consulta_dt_idCategoria= $csLogica->consulta2("categoria",$filter); 
+		$marca=$consulta_dt_idCategoria[0]['fk_idMarca'];*/
+		$filter1="LEFT JOIN  detalle_categoria on programacion.fk_id_detalleCategoria = detalle_categoria.id_dt_categoria LEFT JOIN  categoria on detalle_categoria.fk_id_categoria=categoria.id_categoria LEFT JOIN marca ON categoria.fk_idMarca=marca.id_marca where programacion.fk_id_mascota=".$csMascota[0]['id_mascota'];
+		$consultaMarca= $csLogica->consulta2("programacion",$filter1); 
+		$marca=$consultaMarca[count($consultaMarca)-1]['marca'];
+
+		$categoria=$consultaMarca[count($consultaMarca)-1]['nombre'];
+		
+		/*$consulta_dtCategoria = array();
+		$filter2="WHERE fk_idMarca =".$consultaMarca[0]['id_marca'];
+		$consulta_dtCategoria= $csLogica->consulta2("categoria",$filter2); 
+		$categoria=$consulta_dtCategoria[0]['nombre'];*/
 			
 		$consultaDispensador = array();
 		$consultaDispensador= $csLogica->consulta2("dispensador","WHERE fk_id_usuario=".$userSession[0]["id_usuario"]);    
@@ -38,22 +51,22 @@
 		$CantidadDia = $consulta_cantidadDia[0]['cantidad_dia'];
 		$filter="WHERE fk_id_usuario=".$userSession[0]["id_usuario"];
 		$consultaMascota= $csLogica->consulta2("mascotas",$filter);*/
-		$filter="WHERE fk_id_mascota =".$csMascota[0]['id_mascota'];
-		$consulta_cantidadDia= $csLogica->consulta2("programacion",$filter); 
+		$filter3="WHERE fk_id_mascota =".$csMascota[0]['id_mascota'];
+		$consulta_cantidadDia= $csLogica->consulta2("programacion",$filter3); 
 		$CantidadDia = $consulta_cantidadDia[0]['cantidad_dia'];
 
 		$consulta_dtProgramacion = array();
 		$consulta_dtProgramacion1 = array();
 		$consulta_dtProgramacion2 = array();
 		$consulta_dtProgramacion3 = array();
-		$filter="WHERE fk_idMarca =".$consultaMarca[0]['id_marca'];
-		$consulta_dtProgramacion= $csLogica->consulta2("categoria",$filter); 
-		$filter="WHERE fk_id_categoria =".$consulta_dtProgramacion[0]['id_categoria'];
-		$consulta_dtProgramacion1= $csLogica->consulta2("detalle_categoria",$filter); 
-		$filter="WHERE fk_id_detalleCategoria =".$consulta_dtProgramacion1[0]['id_dt_categoria'];
-		$consulta_dtProgramacion2= $csLogica->consulta2("programacion",$filter); 
-		$filter="WHERE fk_id_programacion =".$consulta_dtProgramacion2[0]['id_programcion'];
-		$consulta_dtProgramacion3= $csLogica->consulta2("detalle_programacion",$filter); 
+		$filter4="WHERE fk_idMarca =".$consultaMarca[0]['id_marca'];
+		$consulta_dtProgramacion= $csLogica->consulta2("categoria",$filter4); 
+		$filter5="WHERE fk_id_categoria =".$consulta_dtProgramacion[0]['id_categoria'];
+		$consulta_dtProgramacion1= $csLogica->consulta2("detalle_categoria",$filter5); 
+		$filter6="WHERE fk_id_detalleCategoria =".$consulta_dtProgramacion1[0]['id_dt_categoria'];
+		$consulta_dtProgramacion2= $csLogica->consulta2("programacion",$filter6); 
+		$filter7="WHERE fk_id_programacion =".$consulta_dtProgramacion2[0]['id_programcion'];
+		$consulta_dtProgramacion3= $csLogica->consulta2("detalle_programacion",$filter7); 
 		$porcion1=$consulta_dtProgramacion3[0]['porcion'];
 		$hora1=$consulta_dtProgramacion3[0]['hora'];
 		$porcion2=$consulta_dtProgramacion3[0]['porcion'];

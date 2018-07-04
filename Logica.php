@@ -275,6 +275,8 @@
 
         function consulta($tabla)
         {
+            mysqli_set_charset( $this->cnn, 'utf8');
+            //$this->cnn->set_charset("utf8mb4");
             $query='SELECT * FROM '.$tabla;
             $resultado=mysqli_query($this->cnn,$query);
             $arrayResult = array();
@@ -299,6 +301,8 @@
         }
         function consulta2($tabla,$filtro)
         {
+            //$this->cnn->set_charset("utf8mb4");
+            mysqli_set_charset( $this->cnn, 'utf8');
             $query='SELECT * FROM '.$tabla. ' '. $filtro;
             $resultado=mysqli_query($this->cnn,$query);
             $arrayResult = array();

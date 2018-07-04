@@ -145,12 +145,13 @@
 									return $bisiesto; 
 								} 
 								// echo "$fecha_actual $fecha_nac" ;
-							
+								$consulta_dtCategoria = array();
 								$consulta_dtCategoria= $csLogica->consulta2("detalle_categoria","WHERE fk_id_categoria ='$fk_id_categoria' ");
 								if (count($consulta_dtCategoria)) {
 									for ($i=0; $i <count($consulta_dtCategoria) ; $i++) {
 										if(($consulta_dtCategoria[$i]['peso_min'] <= $peso && $consulta_dtCategoria[$i]['peso_max'] >= $peso) && ($consulta_dtCategoria[$i]['edad_min'] <= $meses && $consulta_dtCategoria[$i]['edad_max'] >= $meses)){
 											$porcion_dia = (($consulta_dtCategoria[$i]['cant_max'] - $consulta_dtCategoria[$i]['cant_min'])/2) + $consulta_dtCategoria[$i]['cant_min'];
+											$fk_id_detalleCategoria =$consulta_dtCategoria[$i]['id_dt_categoria'];	
 										}
 										else{
 											//echo "Ingresa de nuevo la información" ;
@@ -201,28 +202,7 @@
 									echo "<p>     
 										 </p>" ;
 								//Colocar información para realizar el cálculo
-								/*	$consulta_dtCategoria = array();
-									$filter="WHERE fk_idMarca =".$consultaMarca[0]['id_marca'];
-									$consulta_dtCategoria= $csLogica->consulta2("categoria",$filter); 
-									$categoria=$consulta_dtCategoria[0]['nombre'];
-
-									echo "<em>Resumen información ingresada: </em>" ;
-									echo "<br>	</br>" ;
-									echo " <B>Marca: </B>";
-									echo $consultaMarca[0]['marca'];
-									$marcaE = $_POST['cbox_marca'];	
-									echo "<input type='hidden' id='hd_marca' name='hd_marca' value='$marcaE'>" ;
-									echo "<br>	</br>" ;
-									echo " <B>Categoria: </B>";
-									echo $categoria;
-									$categoriaE = $_POST['cbox_categoria'];	
-									echo "<input type='hidden' id='hd_categoria' name='hd_categoria' value='$categoriaE'>" ;
-									echo "<br>	</br>" ;
-									echo " <B>Porciones: </B>";
-									echo $cboxHora;
-									echo "<input type='hidden' id='hd_cboxHora' name='hd_cboxHora' value='$cboxHora'>" ;
-									echo "<center><B>Programa tu Dispensador CiPetS Feeder a continuación: </B></center>" ;
-									//echo " Cantidad:";*/
+								
 									$porcion_hora;
 									echo "<input type='hidden' id='hd_porcionHora' name='hd_porcionHora' value='$porcion_hora'>" ;
 								
@@ -233,7 +213,7 @@
 									$consulta_dtCategoria= $csLogica->consulta2("detalle_categoria","WHERE fk_id_categoria =".$_POST['cbox_categoria']);
 									$fecha=date ("Y-m-d");
 									$cantidad_dia= $porcion_dia;
-									$fk_id_detalleCategoria =$consulta_dtCategoria[0]['id_dt_categoria'];	
+									//$fk_id_detalleCategoria =$consulta_dtCategoria[0]['id_dt_categoria'];	
 									$fk_id_mascota = $_GET['id_mascota'];	
 									$fk_id_dispensador = $_POST['cboxDispensador']; 
 									if((strlen($fk_id_dispensador) == 0)|| (strlen($fk_id_dispensador) < 1)){

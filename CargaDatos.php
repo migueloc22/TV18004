@@ -16,6 +16,20 @@
                     echo "<option value='".$consultaDepartamento[$i] ["id_ciudad"]."'>".$consultaDepartamento[$i] ["nombre"]."</option>";
                 }
             break;
+            case 'cargaCiudad2':
+                $consultaDepartamento = array();
+                $fk_id_departamento=$_GET['id_departamento'];
+                $id_ciudad=$_GET['id_ciudad'];
+                $filtro = "WHERE fk_id_departamento=" . $fk_id_departamento;
+                $consultaDepartamento= $csLogica->consulta2("ciudad",$filtro);    
+                for ($i=0; $i <count($consultaDepartamento) ; $i++) {
+                    if ($id_ciudad==$consultaDepartamento[$i] ["id_ciudad"]) {
+                        echo "<option value='".$consultaDepartamento[$i] ["id_ciudad"]."'selected='true'>".$consultaDepartamento[$i] ["nombre"]."</option>";
+                    } else {
+                        echo "<option value='".$consultaDepartamento[$i] ["id_ciudad"]."'>".$consultaDepartamento[$i] ["nombre"]."</option>";
+                    }
+                }
+            break;
             case 'cargaRaza':
                 $consultaDepartamento = array();
                 $fk_id_tpMascotas=$_GET['id_tpMascota'];

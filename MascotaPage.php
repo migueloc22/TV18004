@@ -25,6 +25,11 @@
 						</a>
 					</div>
 				</div> 
+				<p>	</p>
+				<div class="input-group col-md-6">
+					<input type="text" class="form-control" placeholder="Buscar Mascota" id="txt_buscar">
+    				<span class="input-group-addon"><i class="glyphicon glyphicon-search"></i></span>
+  				</div>
 				<br>
 				<?php 
 					if (isset($_GET['action']) && isset($_GET['id_mascota'])) {
@@ -32,7 +37,7 @@
 					}
 				?>
 				<br>
-					<table class="table">
+					<table class="table" id="myTable">
 						<thead>
 							<tr>
 								<td>Foto</td>
@@ -80,6 +85,15 @@
 			$(document).ready(function(){
     			$('[data-toggle="tooltip"]').tooltip(); 
 			});
+
+			$(document).ready(function(){
+  			$("#txt_buscar").on("keyup", function() {
+    			var value = $(this).val().toLowerCase();
+    			$("#myTable tbody tr").filter(function() {
+      				$(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+    			});
+  			});
+		});
 	</script>
 	<?php 
 		include "template/pie_pagina.php";

@@ -29,15 +29,30 @@
                         <label for="">Departamento</label>
                         <Select id="slDepartamento"   class="form-control">
                             <?php
+                                $consulta_Ciudad = array();
+                                $consulta_fkDepartamento = array();
+                                $filter="WHERE id_ciudad =".$userSession[0]['fk_idCiudad'];
+
+                                $consulta_Ciudad= $csLogica->consulta2("ciudad",$filter);
+                                $fk_id_departamento = $consulta_Ciudad[0]['fk_id_departamento'];
+
+                                $nombre_Ciudad = $consulta_Ciudad[0]['nombre'];
+
                                 $csLogica=new Logica();
                                 $consultaDepartamento = array();
                                 $consultaDepartamento= $csLogica->consulta("departamento");    
                                 for ($i=0; $i <count($consultaDepartamento) ; $i++) { 
-                                    echo "<option value='".$consultaDepartamento[$i] ["id_departamento"]."'>".$consultaDepartamento[$i] ["nombre"]."</option>";
+                                    if ($fk_id_departamento==$consultaDepartamento[$i] ["id_departamento"]) {
+                                        echo "<option value='".$consultaDepartamento[$i] ["id_departamento"]."' selected='true'>".$consultaDepartamento[$i] ["nombre"]."</option>";
+                                    } else {
+                                        echo "<option value='".$consultaDepartamento[$i] ["id_departamento"]."'>".$consultaDepartamento[$i] ["nombre"]."</option>";
+                                    }                                    
+                                    
                                 }
                             ?>
                         </Select>
                     </div>
+                    
                     <div class="form-group">
                         <label for="">Ciudad</label>
                         <Select id="slCiudad" name="txt_fk_idCiudad" class="form-control">
@@ -89,7 +104,7 @@
 
     <script>
         $(document).ready(function(){
-            $("#slCiudad").load("CargaDatos.php?id_departamento="+$("#slDepartamento").val()+'&Option=cargaCiudad');
+            $("#slCiudad").load("CargaDatos.php?id_ciudad="+<?php echo $userSession[0]['fk_idCiudad']; ?>+'&Option=cargaCiudad2'+"&id_departamento="+$("#slDepartamento").val());
             $("#slDepartamento").change(function() {
                 $("#slCiudad").load("CargaDatos.php?id_departamento="+$("#slDepartamento").val()+'&Option=cargaCiudad');
                 });
