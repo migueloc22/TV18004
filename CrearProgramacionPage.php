@@ -39,22 +39,25 @@
 								$consultaProgramacion= $csLogica->consulta2("programacion",$filter); 
 							?>
 						  </select>
+						  <p>	</p>
 						</div>
 					  	<div class="col-md-12">
 						  <label for="cbox_categoria">Categoria</label>
 						  <select name="cbox_categoria" id="cbox_categoria" class="form-control" >
 							  
 						  </select>
+						  <p>	</p>
 						</div>
 					  	<!-- Dispensador -->
 					  	<div class="col-md-12">
-						  <label for="cboxHora">N Porcion</label>
+						  <label for="cboxHora">Número de Porciones</label>
 						  <select name="cboxHora" id="cboxHora" class="form-control">
 									<option value="1">1</option>
 									<option value="2">2</option>
 									<option value="3">3</option>
 									<option value="4">4</option>
 						  </select>
+						  <p>	</p>
 						</div>
 						<div class="col-md-12">
 						  <label for="">Dispensador</label>
@@ -69,11 +72,12 @@
 									
 								?>
 						  </select> 
+						  <p>	</p>
 						</div>
 						<div class="col-md-12">
 							
 							<br>
-							<input type="submit" name="btnCalcular" value="Calcular" class="btn btn-primary">
+							<input type="submit" name="btnCalcular" value="Calcular" class="btn btn-primary" data-toggle='tooltip' title='Si tienes un Dispensador CiPetS Feeder, recuerda primero registrarlo antes de Calcular'>
 							<p>     
 							</p>
 						</div>
@@ -148,7 +152,9 @@
 										if(($consulta_dtCategoria[$i]['peso_min'] <= $peso && $consulta_dtCategoria[$i]['peso_max'] >= $peso) && ($consulta_dtCategoria[$i]['edad_min'] <= $meses && $consulta_dtCategoria[$i]['edad_max'] >= $meses)){
 											$porcion_dia = (($consulta_dtCategoria[$i]['cant_max'] - $consulta_dtCategoria[$i]['cant_min'])/2) + $consulta_dtCategoria[$i]['cant_min'];
 										}
-										else{}
+										else{
+											//echo "Ingresa de nuevo la información" ;
+										}
 									}
 									//$porcion_dia = (($consulta_dtCategoria[0]['cant_max'] - $consulta_dtCategoria[0]['cant_min'])/2) + $consulta_dtCategoria[0]['cant_min'];
 									$cboxHora=0;
@@ -179,13 +185,19 @@
 									}
 									
 									$porcion_hora = ($porcion_dia/$cboxHora);
-									echo "<br>     
-									</br>" ;
-									echo "<center><B>Porción que debe consumir al día: </B>" ; 
+									echo "<br> </br>" ;
+									echo "<h4><center><B>Alimento promedio calculado para consumir al día: </B>" ;
+									echo "<B>";
+									echo "<span style='color:rgb(236,112,21)'>";
+									//echo "<font color='tomato'>";
 									echo intval($porcion_dia);
+									echo "</span>";
+									//echo "</font>";
+									echo "</B>";
 									echo "<input type='hidden' id='hd_porcion_dia' name='hd_porcion_dia' value='$porcion_dia'>" ;
-									echo " Gramos";
-									echo "</center>" ; 
+									echo " Gramos "; 
+									echo "<B> - Cantidad Sugerida</B>";
+									echo "</center></h4>" ; 
 									echo "<p>     
 										 </p>" ;
 								//Colocar información para realizar el cálculo
@@ -214,7 +226,6 @@
 									$porcion_hora;
 									echo "<input type='hidden' id='hd_porcionHora' name='hd_porcionHora' value='$porcion_hora'>" ;
 								
-									
 						?>
 						<br>
 						
@@ -379,6 +390,11 @@
                 });
         })
     </script>	
+	<script>
+			$(document).ready(function(){
+    			$('[data-toggle="tooltip"]').tooltip(); 
+			});
+	</script>
 	<?php 
 		include "template/pie_pagina.php";
 	?>

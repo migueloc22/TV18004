@@ -20,10 +20,12 @@
 					  	<div class="col-md-12">
 						  <label for="txt_nombre">Nombre</label>
 						  <input required type="text" name="txt_nombre" id="txt_nombre" class="form-control">
+						  <p>	</p>
 						</div>
 					  <div class="col-md-12">
 						  <label for="txt_fecha_nac">Fecha de Nacimiento</label>
 						  <input required type="date" format="aaaa-mm-dd" name="txt_fecha_nac" id="txt_fecha_nac" class="form-control">
+						  <p>	</p>
 						</div>
 					  	<div class="col-md-12">
 						  <label for="cbox_genero">Genero</label>
@@ -31,10 +33,12 @@
 									<option value="hembra">Hembra</option>
 									<option value="macho">Macho</option>
 							</select>
+							<p>	</p>
 						</div>
 					  	<div class="col-md-12">
 						  <label for="txt_peso">Peso (en Kg)</label>
 						  <input required type="number" name="txt_peso" id="txt_peso" class="form-control">
+						  <p>	</p>
 						</div>
 					  	<div class="col-md-12">
 						  <label for="cboxTpMascota">Tipo Mascota</label>
@@ -47,12 +51,14 @@
 									}
 								?>
 						  </select>
+						  <p>	</p>
 						</div>
 					  	<div class="col-md-12">
 						  <label for="cbox_raza">Raza</label>
 						  <select name="cbox_raza" id="cbox_raza" class="form-control">
 							  
 						  </select>
+						  <p>	</p>
 						</div>
 					  	<div class="col-md-6">
 								<?php 
@@ -74,6 +80,10 @@
 									
 								
 								?>
+							<?php
+								//echo "<br>	</br>" ;
+								echo "<p>	</p>" ;
+							?>
 						  <input  type="submit" class="btn btn-primary" name="action" value="Registrar">
 						</div>
 				  </form>

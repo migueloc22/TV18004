@@ -93,7 +93,7 @@
 									}
 								  ?>
 								<div class="form-group ">
-									<input type="submit" class="btn btn-primary btn-md" required name="btn1" value="Entrar">
+									<input type="submit" class="btn btn-primary btn-md" required name="btn1" value="Entrar" data-toggle='tooltip' title='Si ya te registraste, la Contraseña llego a tu Correo Electrónico'>
 									<input type="reset" class="btn btn-default btn-md" required name="" value="limpiar">
 								</div>
 								
@@ -109,5 +109,10 @@
 		<?php 
 			include "template/pie_pagina.php";
 		?>
+	<script>
+			$(document).ready(function(){
+    			$('[data-toggle="tooltip"]').tooltip(); 
+			});
+	</script>
 	</body>
 </html>

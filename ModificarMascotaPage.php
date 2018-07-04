@@ -33,10 +33,12 @@
 					  	<div class="col-md-12">
 						  <label for="txt_nombre">Nombre</label>
 						  <input type="text" name="txt_nombre" id="txt_nombre" value="<?php echo $nombre; ?>" class="form-control">
+						  <p>	</p>
 						</div>
 					  <div class="col-md-12">
 						  <label for="txt_fecha_nac">Fecha de Nacimiento</label>
 						  <input type="date" format="aaaa-mm-dd" name="txt_fecha_nac" id="txt_fecha_nac" value="<?php echo $fecha_nac; ?>" class="form-control">
+						  <p>	</p>
 						</div>
 					  	<div class="col-md-12">
 						  <label for="txt_genero">Genero</label>
@@ -45,10 +47,12 @@
 									<option value="hembra">Hembra</option>
 									<option value="macho">Macho</option>
 							</select>
+							<p>	</p>
 						</div>
 					  	<div class="col-md-12">
-						  <label for="txt_peso">Peso</label>
+						  <label for="txt_peso">Peso (en Kg)</label>
 						  <input type="number" name="txt_peso" id="txt_peso" value="<?php echo $peso; ?>" class="form-control">
+						  <p>	</p>
 						</div>
 					  	<div class="col-md-12">
 						  <label for="txt_">Tipo Mascota</label>
@@ -61,12 +65,13 @@
 									}
 								?>
 						  </select>
+						  <p>	</p>
 						</div>
 					  	<div class="col-md-12">
 						  <label for="txt_">Raza</label>
 						  <select lang="es" name="cboxRaza" id="cboxRaza" class="form-control">
-						  
 						  </select>
+						  <p>	</p>
 						</div>
 					  	<div class="col-md-6">
 							  <br>

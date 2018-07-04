@@ -16,7 +16,7 @@
 		<div class="panel">
 			<div class="panel-body">
 				<fieldset>
-					<h3 class="panel-heading text-center">Registrar Dispensador</h3>
+					<h3 class="panel-heading text-center" data-toggle='tooltip' title='Panel de Administración de tus Dispensadores CiPetS Feeder'>Registrar Dispensador</h3>
 					<form action="" method="post">
 						<div class="col-md-4">							
 							<input required type="text" name="txt_nombre" id="txt_nombre" class="form-control" placeholder="Nombre" >

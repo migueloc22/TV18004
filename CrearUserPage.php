@@ -21,7 +21,7 @@
             <div class="panel-body">
                     <div class="form-group">
                         <div class="panel-heading">
-                            <h1 class="text-center"><a href="index.php">
+                            <h1 class="text-center"><a href="index.php" class="" data-toggle='tooltip' title='Volver a Página Principal'>
                                 <span class="glyphicon  glyphicon-home"></span>
                                 </a> Registro Usuario
                             </h1>
@@ -47,7 +47,7 @@
                         </Select>
                     </div>
                     <div class="form-group">
-                        <label for="">ciudad</label>
+                        <label for="">Ciudad</label>
                         <Select id="slCiudad" name="txt_fk_idCiudad" class="form-control">
                             
                         </Select>
@@ -89,6 +89,11 @@
         })
         
     </script>
+    <script>
+			$(document).ready(function(){
+    			$('[data-toggle="tooltip"]').tooltip(); 
+			});
+	</script>
     
 </body>
 </html>

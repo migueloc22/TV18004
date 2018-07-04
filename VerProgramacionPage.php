@@ -77,66 +77,82 @@
 					  	<div class="col-md-12">
 						  <label for="txt_nombre">Nombre</label>
 						  <input type="text" name="txt_nombre" id="txt_nombre" value="<?php echo $nombre; ?>" class="form-control">
+							<p>	</p>
 						</div>
 					  <div class="col-md-12">
 						  <label for="txt_fecha_nac">Fecha de Nacimiento</label>
 						  <input type="date" format="aaaa-mm-dd" name="txt_fecha_nac" id="txt_fecha_nac" value="<?php echo $fecha_nac; ?>" class="form-control">
+							<p>	</p>
 						</div>
 					  	<div class="col-md-12">
-						  <label for="txt_peso">Peso</label>
+						  <label for="txt_peso">Peso (en Kg)</label>
 						  <input type="text" name="txt_peso" id="txt_peso" value="<?php echo $peso; ?>" class="form-control">
+							<p>	</p>
 						</div>
 						<div class="col-md-12">
 						  <label for="txt_marca">Marca de Alimento</label>
 						  <input type="text" name="txt_marca" id="txt_marca" value="<?php echo $marca; ?>" class="form-control">
+							<p>	</p>
 						</div>
 						<div class="col-md-12">
 						  <label for="txt_categoria_marca">Categoría de Marca</label>
 						  <input type="text" name="txt_categoria_marca" id="txt_categoria_marca" value="<?php echo $categoria; ?>" class="form-control">
+							<p>	</p>
 						</div>
 						<div class="col-md-12">
 						  <label for="txt_dispensador">Dispensador</label>
 						  <input type="text" name="txt_dispensador" id="txt_dispensador" value="<?php echo $dispensador; ?>" class="form-control">
+							<p>	</p>
 						</div>
 						<div class="col-md-12">
 						  <label for="txt_porcion_dia">Porción de Alimento del Día</label>
 						  <input type="text" name="txt_porcion_dia" id="txt_porcion_dia" value="<?php echo $peso; ?>" class="form-control">
+							<p>	</p>
 						</div>
 						<div class="col-md-12">
 						  <label for="txt_num_porciones">Número de Porciones</label>
 						  <input type="text" name="txt_num_porciones" id="txt_num_porciones" value="<?php echo $peso; ?>" class="form-control">
+							<p>	</p>
 						</div>
 						<div class="col-md-12">
 						  <label for="txt_porcion_1">Porción 1</label>
 						  <input type="text" name="txt_porcion_1" id="txt_porcion_1" value="<?php echo $porcion1; ?>" class="form-control">
+							<p>	</p>
 						</div>
 						<div class="col-md-12">
 						  <label for="txt_hora_porcion_1">Hora Porción 1</label>
 						  <input type="text" name="txt_hora_porcion_1" id="txt_hora_porcion_1" value="<?php echo $hora1; ?>" class="form-control">
+							<p>	</p>
 						</div>
 						<div class="col-md-12">
 						  <label for="txt_porcion_2">Porción 2</label>
 						  <input type="text" name="txt_porcion_2" id="txt_porcion_2" value="<?php echo $porcion2; ?>" class="form-control">
+							<p>	</p>
 						</div>
 						<div class="col-md-12">
 						  <label for="txt_hora_porcion_2">Hora Porción 2</label>
 						  <input type="text" name="txt_hora_porcion_2" id="txt_hora_porcion_2" value="<?php echo $hora2; ?>" class="form-control">
+							<p>	</p>
 						</div>
 						<div class="col-md-12">
 						  <label for="txt_porcion_3">Porción 3</label>
 						  <input type="text" name="txt_porcion_3" id="txt_porcion_3" value="<?php echo $porcion3; ?>" class="form-control">
+							<p>	</p>
 						</div>
 						<div class="col-md-12">
 						  <label for="txt_hora_porcion_3">Hora Porción 3</label>
 						  <input type="text" name="txt_hora_porcion_3" id="txt_hora_porcion_3" value="<?php echo $hora3; ?>" class="form-control">
+							<p>	</p>
 						</div>
 						<div class="col-md-12">
 						  <label for="txt_porcion_4">Porción 4</label>
 						  <input type="text" name="txt_porcion_4" id="txt_porcion_4" value="<?php echo $porcion4; ?>" class="form-control">
+							<p>	</p>
 						</div>
 						<div class="col-md-12">
 						  <label for="txt_hora_porcion_4">Hora Porción 4</label>
 						  <input type="text" name="txt_hora_porcion_4" id="txt_hora_porcion_4" value="<?php echo $hora4; ?>" class="form-control">
+							<p>	</p>
 						</div>
 
 					  	<div class="col-md-6">

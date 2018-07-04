@@ -15,7 +15,7 @@
 		<div style="height: 55px"></div>
 		<div class="panel">
 			<div class="panel-body">
-				<h3 class="panel-header text-center">Mascotas</h3>
+				<h3 class="panel-header text-center" data-toggle='tooltip' title='Panel de Administración de tus mascotas'>Mascotas </h3>
 				<div>
 					<div class="col-md-offset-11">
 						<a href="CrearMascotaPage.php" class="" data-toggle='tooltip' title='Agregar Mascota'>
