@@ -36,7 +36,7 @@
                                 $consulta_Ciudad= $csLogica->consulta2("ciudad",$filter);
                                 $fk_id_departamento = $consulta_Ciudad[0]['fk_id_departamento'];
 
-                                $nombre_Ciudad = $consulta_Ciudad[0]['nombre'];
+                                //$nombre_Ciudad = $consulta_Ciudad[0]['nombre'];
 
                                 $csLogica=new Logica();
                                 $consultaDepartamento = array();

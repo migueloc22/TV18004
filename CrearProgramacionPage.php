@@ -224,19 +224,24 @@
 									$id_programacion=$csLogica->crearProgramacion($fecha,$cantidad_dia,$fk_id_detalleCategoria,$fk_id_mascota,$fk_id_dispensador1);
 									echo "<input type='hidden' id='hd_idProgramacion' name='hd_idProgramacion' value='$id_programacion'>" ;
 							
-									$consulta_dtCategoria = array();
-									$filter="WHERE fk_idMarca =".$consultaMarca[0]['id_marca'];
-									$consulta_dtCategoria= $csLogica->consulta2("categoria",$filter); 
-									$categoria=$consulta_dtCategoria[0]['nombre'];
+									$csMascota = array();
+        							$csMascota= $csLogica->consulta2("mascotas","WHERE id_mascota=".$_GET['id_mascota']);
+									$filter1="LEFT JOIN  detalle_categoria on programacion.fk_id_detalleCategoria = detalle_categoria.id_dt_categoria LEFT JOIN  categoria on detalle_categoria.fk_id_categoria=categoria.id_categoria LEFT JOIN marca ON categoria.fk_idMarca=marca.id_marca where programacion.fk_id_mascota=".$csMascota[0]['id_mascota'];
+									$consultaMarca= $csLogica->consulta2("programacion",$filter1); 
+									$marca=$consultaMarca[count($consultaMarca)-1]['marca'];
+
+									$categoria=$consultaMarca[count($consultaMarca)-1]['nombre'];
 
 									echo "<em>Resumen información ingresada: </em>" ;
 									echo "<br>	</br>" ;
 									echo " <B>Marca: </B>";
-									echo $consultaMarca[0]['marca'];
+									//echo $consultaMarca[0]['marca'];
+									echo $marca;
 									$marcaE = $_POST['cbox_marca'];	
 									echo "<input type='hidden' id='hd_marca' name='hd_marca' value='$marcaE'>" ;
 									echo "<br>	</br>" ;
 									echo " <B>Categoria: </B>";
+									//echo $nombreCategoria;
 									echo $categoria;
 									$categoriaE = $_POST['cbox_categoria'];	
 									echo "<input type='hidden' id='hd_categoria' name='hd_categoria' value='$categoriaE'>" ;

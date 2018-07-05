@@ -39,6 +39,15 @@
                     echo "<option value='".$consultaDepartamento[$i] ["id_raza"]."'>".$consultaDepartamento[$i] ["nombre"]."</option>";
                 }
             break;
+            case 'cargaRaza2':
+                $consultaDepartamento = array();
+                $fk_id_tpMascotas=$_GET['id_tpMascota'];
+                $filtro = "WHERE fk_id_tpMascotas=" . $fk_id_tpMascotas;
+                $consultaDepartamento= $csLogica->consulta2("raza",$filtro);    
+                for ($i=0; $i <count($consultaDepartamento) ; $i++) { 
+                    echo "<option value='".$consultaDepartamento[$i] ["id_raza"]."'selected='true'>".$consultaDepartamento[$i] ["nombre"]."</option>";
+                }
+            break;
             case 'cargaCatagoria':
                 $consultaMarca = array();
                 $fk_idMarca=$_GET['id_marca'];
